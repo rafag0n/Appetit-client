@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import logo from '../public/icons/logo.svg'
 import TextInput from '../components/TextInput'
 import ButtonGhost from '../components/ButtonGhost'
 import ButtonPrimary from '../components/ButtonPrimary'
+import './style.scss'
 
 class Login extends Component {
     constructor(props){
@@ -38,13 +40,17 @@ class Login extends Component {
 
     render(){
         return (
-        <div>
-            <h3>Welcome!</h3>
-            <p>Sign in to your account with your e-mail and password:</p>
-            <TextInput onUpdate={this.updateStateFactory('email')} value={this.state.email}/>
-            <TextInput onUpdate={this.updateStateFactory('password')} value={this.state.password}/>
-            <ButtonGhost text='I forgot my password'/>
-            <ButtonPrimary available={this.loginButtonAvailable()} text='Login'/>
+
+        <div id='login_page_wrapper'>
+            <div id='login_wrapper'>
+                <img src={logo} id='logo_main'/>
+                <h3 id='login__welcome'>Welcome!</h3>
+                <p id='login__p'>Sign in to your account with your e-mail and password:</p>
+                <TextInput onUpdate={this.updateStateFactory('email')} value={this.state.email}/>
+                <TextInput onUpdate={this.updateStateFactory('password')} value={this.state.password}/>
+                <ButtonGhost text='I forgot my password'/>
+                <ButtonPrimary available={this.loginButtonAvailable()} text='Login'/>
+            </div>
         </div>)
 
     }
