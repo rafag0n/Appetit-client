@@ -1,0 +1,29 @@
+{
+  "name": "appetit-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rafag0n",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npx webpack --mode production",
+    "start": "webpack-dev-server --open --mode development",
+    "start:dev": "webpack-dev-server --mode development --hot"
+  },
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.1",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.4.2",
+    "html-loader": "^1.0.0",
+    "html-webpack-plugin": "^4.0.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-hot-loader": "^4.12.20",
+    "style-loader": "^1.1.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
