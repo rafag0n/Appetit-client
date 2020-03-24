@@ -22,14 +22,13 @@ class Login extends Component {
 
     }
 
-    updateStateFactory = (key) => {  
-        return function(newValue){
+    handleChangeFactory = (key) => {  
+        return (newValue) => {
             this.setState((previousState)=>{
                 let newState = Object.create(previousState)
                 newState[key] = newValue
                 return newState
             })
-            return 
         }
     }
 
@@ -46,8 +45,8 @@ class Login extends Component {
                 <img src={logo} id='logo_main'/>
                 <h3 id='login__welcome'>Welcome!</h3>
                 <p id='login__p'>Sign in to your account with your e-mail and password:</p>
-                <TextInput onUpdate={this.updateStateFactory('email')} value={this.state.email}/>
-                <TextInput onUpdate={this.updateStateFactory('password')} value={this.state.password}/>
+                <TextInput handleChange={this.handleChangeFactory('email')} value={this.state.email}/>
+                <TextInput handleChange={this.handleChangeFactory('password')} value={this.state.password}/>
                 <ButtonGhost text='I forgot my password'/>
                 <ButtonPrimary available={this.loginButtonAvailable()} text='Login'/>
             </div>
