@@ -20,19 +20,29 @@
 }
 
 #login__p {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    width: 90%;
+    text-align: center;
 }
 
 #login_wrapper .text_input {
-
+    margin-top: 15px;
+    width: 90%;
 }
 
-#login_wrapper .button_ghost {
-
+#login_wrapper .button-primary {
+    width: 70%;
 }
 
-#login_wrapper .button_primary {
-    
+#login_wrapper .button-ghost {
+    margin-top: 37px;
+    margin-bottom: 37px;
 }
 
-
+.input_error {
+    font-family: 'Open Sans';
+    font-size: 12px;
+    color: rgb(219, 0, 0);
+    width: 90%;
+    text-align: left;
+}

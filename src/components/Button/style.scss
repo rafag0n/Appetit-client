@@ -1,0 +1,18 @@
+.button-primary {
+    border-radius: 100px;
+    background: #ff8822;
+    height: 48px;
+    color: white;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.button-ghost {
+    font-weight: 1000;
+    border-radius: 100px;
+    background: transparent;
+    color: rgba(0,0,0,0.88);
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: bold;
+}

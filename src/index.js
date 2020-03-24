@@ -1,4 +1,4 @@
-import Login from './pages/login'
+import Login from './pages/login/'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './main.scss'

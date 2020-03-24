@@ -1,5 +1,5 @@
 
-$text_input_padding: 20px;
+$text_input_padding: 15px;
 $text_input_inputborder-radius: 5px;
 $text_input_inputborder-width: 1px;
 $text_input-inputborder-width-focus: 2px;
@@ -10,12 +10,12 @@ $text_input-font-family: 'Open Sans';
 $text_input-color-focus: #FF8822;
 $text_input-color: #000000;
 $text_input-font-size:16px;
+$text_input-error-font-size:12px;
+$text_input-height: 56px;
 
 .text_input{
     position: relative;
-    height: 50px;
-    width: 500px;
-    margin-top: 10px;
+    height: $text_input-height;
 }
 
 .text_input-border{
@@ -84,8 +84,8 @@ $text_input-font-size:16px;
     font-size: $text_input_label_font-size;
     color: $text_input-color-focus;
     padding: 0px;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 1px;
+    margin-left: 1px;
     font-family: $text_input-font-family
 }
 
@@ -98,8 +98,8 @@ $text_input-font-size:16px;
     bottom: ($text_input_label_font-size/1.5);
     font-size: $text_input_label_font-size;
     padding: 0px;
-    margin-right: 3px;
-    margin-left: 3px;
+    margin-right: 1px;
+    margin-left: 1px;
     font-family: $text_input-font-family
 }
 
@@ -115,4 +115,10 @@ $text_input-font-size:16px;
     padding-left: $text_input_padding;
     font-size: $text_input-font-size;
     font-family:$text_input-font-family
+}
+
+.text_input--error {
+    top: 100%;
+    position: relative;
+    font-size: $text_input-error-font-size;
 }
