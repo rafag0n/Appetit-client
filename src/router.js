@@ -16,15 +16,15 @@ class PageRouter extends Component {
         return (
             <Router>
             <Switch>
-                <Route path="/customer/:id"><CustomerOrders/></Route>
-                <Route path="/order/new/product"><SelectProduct/></Route>
-                <Route path="/order/new/product/:id/"><ProductDetail/></Route>
-                <Route path="/order/new/customers"><SelectCustomers/></Route>
-                <Route path="/order/new/payment"><PaymentStatus/></Route>
-                <Route path="/order/new/success"><OrderSuccess/></Route>
-                <Route path="/home"><Home/></Route>
-                <Route path="/"><Login/></Route>
-                <Route path="*"><NotFound404/></Route>
+                <Route exact path="/customer/:id"><CustomerOrders/></Route>
+                <Route exact path="/order/new/product"><SelectProduct/></Route>
+                <Route exact path="/order/new/product/:id/"><ProductDetail/></Route>
+                <Route exact path="/order/new/customers"><SelectCustomers/></Route>
+                <Route exact path="/order/new/payment"><PaymentStatus/></Route>
+                <Route exact path="/order/new/success"><OrderSuccess/></Route>
+                <Route exact path="/home"><Home/></Route>
+                <Route exact path="/"><Login/></Route>
+                <Route exact path="*"><NotFound404/></Route>
             </Switch>
             </Router>
         )

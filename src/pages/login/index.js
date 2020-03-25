@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import logo from '../../public/icons/logo.svg'
-import TextInput from '../../components/TextInput'
-import Button from '../../components/Button'
+import TextInput from '../../components/textInput'
+import Button from '../../components/button'
 import './style.scss'
 
 
