@@ -1,8 +1,8 @@
-import Login from './pages/login/'
+import Router from './router.js'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './main.scss'
 
 
 const wrapper = document.getElementById("container")
-wrapper ? ReactDOM.render(<Login />, wrapper) : false
+wrapper ? ReactDOM.render(<Router />, wrapper) : false
