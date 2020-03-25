@@ -16,6 +16,8 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
     "css-loader": "^3.4.2",
     "html-loader": "^1.0.0",
     "html-webpack-plugin": "^4.0.1",

@@ -29,13 +29,17 @@ class Login extends Component {
     constructor(props){
         super(props)
         this.state = this.generateState(fields);
+        
     }
 
     generateState = (fields) => {
         let state = {}
         state['error'] = {}
+        state['fields'] = {}
+        state['serverError'] = ''
+        state['loading'] = false
         Object.keys(fields).forEach((key)=>{
-            state[key] = ''
+            state.fields[key] = ''
             state.error[key] = ''
         })
         return state;
@@ -44,7 +48,7 @@ class Login extends Component {
     validateForm = () => {
         let errors = []
         Object.keys(fields).forEach((key)=>{
-            let isValid = this.isFieldValid(this.state[key], fields[key].minLength, fields[key].regex)
+            let isValid = this.isFieldValid(this.state.fields[key], fields[key].minLength, fields[key].regex)
             let error = (isValid) ? '' : fields[key].defaultError 
             if (error) errors.push(error)
             this.setError(key, error)
@@ -52,22 +56,24 @@ class Login extends Component {
         if (errors.length > 0) throw new Error(`Invalid form input:${errors}`)
     }
 
-    attemptLogin = () => {
+    attemptLogin = async () => {
         
-        let {email,password} = this.state
-        payload = {email, password}
-        //await this.login(payload)
-
+        const {email,password} = this.state.fields
+        let payload = {email, password}
+        //const res = await this.login(payload)
+        return {body:{}}
+         
     }
 
-    login = (payload) => {
-        try {
-            console.log('MAKE API CALL HERE')
-        } catch (err) {
-            throw new Error(err)
+    onServerResponse = (response) => {
+        if (response.body.token) {
+            //DO RESPONSE SUCCESS
+        } else {
+            let err = new Error('Server response failed')
+            this.setServerError(err.message)
+            throw err;
         }
     }
-
 
 
 
@@ -76,10 +82,18 @@ class Login extends Component {
         return regex.test(input)
     }
 
-    setError = (key, error) => {
+    setError = (key, message) => {
         this.setState((previousState)=>{
             let newState = Object.create(previousState)
-            newState.error[key]=error
+            newState.error[key]=message
+            return newState
+        })
+    }
+
+    setServerError = (message) => {
+        this.setState((previousState)=>{
+            let newState = Object.create(previousState)
+            newState.serverError=message
             return newState
         })
     }
@@ -89,21 +103,39 @@ class Login extends Component {
         return (newValue) => {
             this.setState((previousState)=>{
                 let newState = Object.create(previousState)
-                newState[key] = newValue
+                newState.fields[key] = newValue
                 return newState
             })
         }
     }
 
-    loginButtonAvailable = () => {
-        let isAvailable = this.state.email && this.state.password
-        return isAvailable
+    isLoginButtonEnabled = () => {
+        let available = true
+        Object.keys(this.state.fields).forEach((key)=>{
+            if (this.state.fields[key] == ''){
+                available = false
+            }
+        })
+        return available;
     }
 
-    handleSubmit = () => {
+    setStateAsync = (state) => {
+        return new Promise((resolve) => {
+            this.setState(state, resolve)
+        });
+    }
+
+
+    handleSubmit = async () => {
+        if (this.state.loading) return;
+        await this.setStateAsync({loading:true})
+
         try {
             this.validateForm()
+            const res = await this.attemptLogin()
+            this.onServerResponse(res)
         } catch (err) {
+            await this.setStateAsync({loading:false})
             console.log(err)
         }
     }
@@ -111,7 +143,7 @@ class Login extends Component {
     generateFields = (fields) => {
         
         return Object.keys(fields).map((key)=><React.Fragment key={key} >
-            <TextInput type={fields[key].type} name={fields[key].name} handleChange={this.handleChangeFactory(key)} value={this.state[key]}/>
+            <TextInput type={fields[key].type} name={fields[key].name} handleChange={this.handleChangeFactory(key)} value={this.state.fields[key]}/>
             <InputError value={this.state.error[key]}/>
             </React.Fragment>
         )       
@@ -119,17 +151,18 @@ class Login extends Component {
 
     render(){ 
         let inputFields = this.generateFields(fields)
-
         return (
         <div id='login_page_wrapper'>
-            <div id='login_wrapper'>
+            <form id='login_wrapper' autoComplete="off">
                 <img src={logo} id='logo_main'/>
                 <h3 id='login__welcome'>Welcome!</h3>
                 <p id='login__p'>Sign in to your account with your e-mail and password:</p>
                 {inputFields}
                 <Button type='ghost' text='I forgot my password'/>
-                <Button onClick={this.handleSubmit} type='primary' available={this.loginButtonAvailable()} text='Login'/>
-            </div>
+                <ServerError value={this.state.serverError}/>
+                <Button onClick={this.handleSubmit} type='primary' enabled={this.isLoginButtonEnabled()} text='Login'/>
+                
+            </form>
         </div>)
 
     }
@@ -140,6 +173,17 @@ function InputError(props){
 
     if (props.value) {
         return <div className='input_error'>{props.value}</div>
+    } else {
+        return <div></div>
+    }
+     
+}
+
+
+function ServerError(props){
+
+    if (props.value) {
+        return <div className='server_error'>{props.value}</div>
     } else {
         return <div></div>
     }

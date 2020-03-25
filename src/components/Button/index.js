@@ -9,13 +9,19 @@ class Button extends Component {
         super(props)
     }
 
+    onClick = (event) => {
+        event.preventDefault()
+        if (this.props.enabled) this.props.onClick(event) 
+    }
+
     render(){
 
-        let enabled = (this.props.enabled) ? 'enabled' : 'disabled'
+        let enabled = (this.props.enabled) ? '' : 'button-disabled'
         let className = `button-${this.props.type} ${enabled}`
-
+        
+        
         return (
-            <button className={className} onClick={this.props.onClick}>{this.props.text}</button>
+            <button className={className} onClick={this.onClick}>{this.props.text}</button>
         )
     }
 

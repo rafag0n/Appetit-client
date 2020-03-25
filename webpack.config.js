@@ -2,6 +2,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
+    entry: ['babel-polyfill', './src/index.js'],
     devServer: {
         stats: {
             children: false,

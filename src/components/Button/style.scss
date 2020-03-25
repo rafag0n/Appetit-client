@@ -16,3 +16,11 @@
     padding-left: 10px;
     font-weight: bold;
 }
+
+.button-disabled {
+    opacity: 0.5
+}
+
+.button-disabled:hover {
+    cursor: initial;
+}
