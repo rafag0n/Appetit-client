@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import logo from '../../public/icons/logo.svg'
 import TextInput from '../../components/textInput'
 import Button from '../../components/button'
+import Auth from '../../api/auth'
 import './style.scss'
 
 
@@ -59,18 +60,16 @@ class Login extends Component {
     attemptLogin = async () => {
         
         const {email,password} = this.state.fields
-        let payload = {email, password}
-        //const res = await this.login(payload)
+        //const res = await auth.login(email, password)
         return {body:{}}
          
     }
 
     onServerResponse = (response) => {
-        if (response.body.token) {
+        if (!response.body.error) {
             //DO RESPONSE SUCCESS
         } else {
-            let err = new Error('Server response failed')
-            this.setServerError(err.message)
+            this.setServerError(response.body.error)
             throw err;
         }
     }

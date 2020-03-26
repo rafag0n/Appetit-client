@@ -1,0 +1,26 @@
+.list-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    border-bottom:solid;
+    border-bottom-width:1px;
+    border-bottom-color: rgba(0,0,0,0.10);
+    align-items: center;
+}
+
+.list-item--image {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right: 15px;
+    background-color: gray;
+}
+
+.list-item>p {
+    flex:1;
+    text-align: right;
+}
+
+.list-item--image:hover, .list-item>h6:hover{
+    cursor:pointer;
+}
