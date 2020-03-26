@@ -29,7 +29,6 @@ class SelectProduct extends Component {
 
     loadProducts = async () => {
         let newProducts = await order.loadProducts(this.state.pageIndex, 10)
-        console.log(newProducts)
         this.setState((previousState)=>{
             return {products: Array.concat(previousState.products,newProducts)}
         })

@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
 import ListItem from '../listItem'
+import { useHistory } from "react-router-dom";
 import './style.scss'
 
 function ProductList(props) {
+    let history = useHistory()
+
+    let productDetailLink = (product) =>{
+        return `/order/products?q=${product._id}`
+    }
 
     let sortByCategory = (products) => {
         let output = {}
@@ -17,12 +23,16 @@ function ProductList(props) {
         return productList.sort((a,b)=>{return (a.name > b.name) ? 1 : -1})
     }
 
+    let navigateTo = (product) => {
+        history.push(productDetailLink(product))
+    }
+
     let renderProducts = (products) => {
         products = sortByName(products)
         return products.map((product)=>{
             let secondaryValue = `$ ${product.price.toFixed(2)}`
-            return <ListItem key={product._id} onClick={()=>{}}
-            item={product.name} imageUrl={product.url} secondaryValue={secondaryValue}/>
+            return <ListItem key={product._id} onClick={()=>{navigateTo(product)}}
+            item={product.name} imageUrl={product.imageUrl} secondaryValue={secondaryValue}/>
         })
     }
 

@@ -10,6 +10,9 @@ const order = {
             
         });
     },
+    loadProductData: async (productId) => {
+        return mockProducts.find((product)=>{return product._id == productId})
+    }
 }
 
 

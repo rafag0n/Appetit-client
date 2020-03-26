@@ -3,7 +3,7 @@ let couscouz = {
     category: 'Couscous',
     name: 'Couscous',
     price: 3.25,
-    image: 'url',
+    imageUrl: 'url',
     custom: [{
         name: 'Grains',
         options: ['Rice','Corn'],
@@ -15,7 +15,7 @@ let couscouzSandwich = {
     _id: '2',
     category: 'Couscous',
     name: 'Couscous Sandwich',
-    image: 'url',
+    imageUrl: 'url',
     price: 1.25,
     custom: [{
         name: 'Grains',
@@ -34,7 +34,7 @@ let wholeWheatBread = {
     category: 'Breads',
     name: 'Whole wheat bread',
     price: 1.25,
-    image: 'url',
+    imageUrl: 'url',
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],
@@ -47,7 +47,7 @@ let frenchBread = {
     category: 'Breads',
     name: 'French Bread',
     price: 0.50,
-    image: 'url',
+    imageUrl: 'url',
 }
 
 let squareBread = {
@@ -55,7 +55,7 @@ let squareBread = {
     category: 'Breads',
     name: 'Square Bread',
     price: 0.50,
-    image: 'url',
+    imageUrl: 'url',
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],

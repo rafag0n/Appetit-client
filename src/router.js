@@ -17,8 +17,8 @@ class PageRouter extends Component {
             <Router>
             <Switch>
                 <Route exact path="/customer/:id"><CustomerOrders/></Route>
-                <Route exact path="/order/product"><SelectProduct/></Route>
-                <Route exact path="/order/product/:id/"><ProductDetail/></Route>
+                <Route exact path="/order/add-products"><SelectProduct/></Route>
+                <Route exact path="/order/products"><ProductDetail/></Route>
                 <Route exact path="/order/customers"><SelectCustomers/></Route>
                 <Route exact path="/order/payment"><PaymentStatus/></Route>
                 <Route exact path="/order/success"><OrderSuccess/></Route>

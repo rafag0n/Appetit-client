@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import Add from '../../public/icons/add.svg'
+
 import './style.scss'
  
 
@@ -23,7 +24,7 @@ class Button extends Component {
 
 
     addButton = () => {
-        return (<button className='button-add'>
+        return (<button onClick={this.onClick} className='button-add'>
             <img src={Add} className='button-add--icon'/>
             <div className='button-add--text'>{this.props.text}</div>
         </button>) 
