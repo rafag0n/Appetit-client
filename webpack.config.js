@@ -3,6 +3,9 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: ['babel-polyfill', './src/index.js'],
+    output: {
+        publicPath: '/'
+    },
     devServer: {
         historyApiFallback: true,
         stats: {

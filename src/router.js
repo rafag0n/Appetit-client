@@ -17,11 +17,11 @@ class PageRouter extends Component {
             <Router>
             <Switch>
                 <Route exact path="/customer/:id"><CustomerOrders/></Route>
-                <Route exact path="/order/new/product"><SelectProduct/></Route>
-                <Route exact path="/order/new/product/:id/"><ProductDetail/></Route>
-                <Route exact path="/order/new/customers"><SelectCustomers/></Route>
-                <Route exact path="/order/new/payment"><PaymentStatus/></Route>
-                <Route exact path="/order/new/success"><OrderSuccess/></Route>
+                <Route exact path="/order/product"><SelectProduct/></Route>
+                <Route exact path="/order/product/:id/"><ProductDetail/></Route>
+                <Route exact path="/order/customers"><SelectCustomers/></Route>
+                <Route exact path="/order/payment"><PaymentStatus/></Route>
+                <Route exact path="/order/success"><OrderSuccess/></Route>
                 <Route exact path="/home"><Home/></Route>
                 <Route exact path="/"><Login/></Route>
                 <Route exact path="*"><NotFound404/></Route>

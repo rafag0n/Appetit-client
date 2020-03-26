@@ -23,7 +23,13 @@
     cursor: pointer;
 }
 
+.search-bar--submit-button:focus {
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.35);
+    background-color: white;
+}
+
 .search-bar--icon {
     height: 18px;
     width: 18px;
 }
+

@@ -1,0 +1,22 @@
+#select-product {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#select-product .search-bar {
+    margin-top: 5px;
+}
+
+#select-product .progress-bar {
+    margin-top: 25px;
+}
+
+#select-product>p {
+    margin-top: 15px;
+}
+
+#select-product>h6 {
+    margin-top: 20px;
+}
