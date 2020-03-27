@@ -38,7 +38,7 @@ let wholeWheatBread = {
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],
-        multiple: false
+        multiple: true
     }]
 }
 
@@ -60,7 +60,7 @@ let squareBread = {
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],
-        multiple: false
+        multiple: true
     },
     {
         name: 'Size',

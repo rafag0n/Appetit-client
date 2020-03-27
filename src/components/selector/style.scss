@@ -9,6 +9,11 @@
     display: flex;
 }
 
+
+.selector-card:hover, .selector-card * {
+    cursor:pointer
+}
+
 .selector-card:first-of-type {
     margin-top: 15px;
 }
@@ -23,3 +28,5 @@
     font-size: 16px;
     color: rgba(0,0,0,0.56);
 }
+
+

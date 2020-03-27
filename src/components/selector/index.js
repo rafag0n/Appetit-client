@@ -52,7 +52,7 @@ class Selector extends Component {
     render() {
         
         return <div className='selector'>
-            <p>Choose your desired {this.props.name}</p>
+            <p>Choose your desired {this.props.name}:</p>
             {this.renderOptions()}
         </div>
     }
@@ -64,16 +64,18 @@ function RadioOption(props) {
 
     const {checkedOption, value} = props
 
-    let onChange = (event) => {
-        props.onChange(event.target.value, event.target.checked)
-    } 
+    let onWrapperClicked = () => {
+        let checked = (checkedOption==value)
+        props.onChange(value, !checked)
+    }
+
     
     return (
-        <div className='radio-option selector-card'>
+        <div onClick={onWrapperClicked} className='radio-option selector-card'>
             <input type='radio' 
             checked={checkedOption==value} 
             value={value} 
-            onChange={onChange}/>
+            onChange={()=>{}}/>
             <label htmlFor={value}>{value}</label>
         </div>
     )
@@ -85,20 +87,24 @@ function CheckOption(props) {
 
     const {checkedOptions, value} = props
 
-    let onChange = (event) => {
-        props.onChange(event.target.value, event.target.checked)
-    } 
+
+    let onWrapperClicked = () => {
+        let checked = isChecked()
+        props.onChange(value, !checked)
+    }
 
     let isChecked = () => {
-        return (checkedOptions.find(value)!=null)
+        return (checkedOptions.find(selected=>selected==value)!=null)
     }
     
+    let checked=isChecked()
+        
     return (
-        <div className='check-option selector-card'>
+        <div onClick={onWrapperClicked} className='check-option selector-card'>
             <input type='checkbox' 
-            defaultChecked={isChecked} 
+            checked={checked} 
             value={value} 
-            onChange={onChange} />
+            onChange={()=>{}} />
             <label htmlFor={value}>{value}</label>
         </div>
     )
