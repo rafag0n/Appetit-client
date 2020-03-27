@@ -46,7 +46,7 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
-    type: PropTypes.oneOf(['primary','secondary','ghost','add'])
+    type: PropTypes.oneOf(['primary','secondary','ghost','add', 'add-product'])
 }
 
 

@@ -3,6 +3,8 @@ import { withRouter } from 'react-router'
 import TopText from '../../components/topText/'
 import BasicInfo from '../../components/basicInfo'
 import Selector from '../../components/selector'
+import TextBox from '../../components/textBox'
+import DetailFooterBar from '../../components/detailFooterBar'
 import order from '../../mock/api/order'
 import queryString from 'query-string'
 import './style.scss'
@@ -37,12 +39,19 @@ class ProductDetail extends Component {
 
     }
 
+    handleRequest = () => {
+
+    }
+
     renderSelectors = () => {
-        console.log(this.state)
         const {custom} = this.state.product
-        return custom.map(({name, options, multiple})=>(<Selector onUpdate={this.handleCustom}
-            options={options} key={name} multiple={multiple} name={name}/>
-        ))
+        if (custom.length == 0) return 
+        return <React.Fragment>
+            <h6>Options</h6>
+            {custom.map(({name, options, multiple})=>(<Selector onUpdate={this.handleCustom}
+                options={options} key={name} multiple={multiple} name={name}/>
+            ))}
+        </React.Fragment>
     }
 
     render(){
@@ -54,8 +63,10 @@ class ProductDetail extends Component {
             <TopText value='Order Details'/>
             <p>You can customize the details of your order here below:</p>
             <BasicInfo title={name} imageUrl={imageUrl} subtitle={price}/>
-            <h6>Options</h6>
             {this.renderSelectors()}
+            <h6>Special Requests</h6>
+            <TextBox placeholder='Any special request?'></TextBox>
+            <DetailFooterBar />
         </div>
     }
 }
