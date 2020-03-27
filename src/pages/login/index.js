@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import logo from '../../public/icons/logo.svg'
 import TextInput from '../../components/textInput'
 import Button from '../../components/button'
-import Auth from '../../api/auth'
+import Auth from '../../mock/api/auth'
 import './style.scss'
 
 

@@ -48,6 +48,7 @@ let frenchBread = {
     name: 'French Bread',
     price: 0.50,
     imageUrl: 'url',
+    custom: [],
 }
 
 let squareBread = {
