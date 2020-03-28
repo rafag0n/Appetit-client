@@ -6,8 +6,8 @@ APPETIT
 
 
 <p align="center">
-    <a href="#motivação">Motivação</a> &bull;
-    <a href="#instalação">Instalação</a>
+    <a href="#motivation">Motivation</a> &bull;
+    <a href="#install">Install</a>
 </p>
 
 -------
