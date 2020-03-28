@@ -7,7 +7,8 @@ let couscouz = {
     custom: [{
         name: 'Grains',
         options: ['Rice','Corn'],
-        multiple: false
+        multiple: false,
+        required: true
     }]
 }
 
@@ -20,11 +21,13 @@ let couscouzSandwich = {
     custom: [{
         name: 'Grains',
         options: ['Rice','Corn'],
-        multiple: false
+        multiple: false,
+        required: true
     },{
         name: 'Ingredients',
         options: ['Ham', 'Cheese', 'Lettuce', 'Olive oil'],
-        multiple: true
+        multiple: true,
+        required: false
     }]
 }
 
@@ -38,7 +41,8 @@ let wholeWheatBread = {
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],
-        multiple: true
+        multiple: true,
+        required: false
     }]
 }
 
@@ -60,12 +64,14 @@ let squareBread = {
     custom: [{
         name: 'Toppings',
         options: ['Granola','Corn Flakes','Condensed Milk'],
-        multiple: true
+        multiple: true,
+        required: false
     },
     {
         name: 'Size',
         options: ['Double Slice','Half Slice'],
-        multiple: false
+        multiple: false,
+        required: true
     }]
 }
 

@@ -52,12 +52,17 @@ class Selector extends Component {
     render() {
         
         return <div className='selector'>
-            <p>Choose your desired {this.props.name}:</p>
+            <p>Choose your desired {this.props.name}</p>
+            {(this.props.required)? <div className='selector-required'>Required</div>:null}
             {this.renderOptions()}
         </div>
     }
 
+}
 
+
+Selector.defaultProps = {
+    required: false
 }
 
 function RadioOption(props) {

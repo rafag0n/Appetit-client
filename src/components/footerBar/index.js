@@ -4,20 +4,19 @@ import './style.scss'
 function FooterBar(WrappedComponent) {
     
     return class extends Component {
-        constructor(props){
-            super(props)
-            this.state = {
-                visible: true
-            }
-        }
-
         render(){
+            if (this.props.visible) {
             return <div className='footer-bar'>
                 <WrappedComponent {...this.props}/>
-            </div>
+            </div> }
+            else return <div></div>
         }
     }
 
+}
+
+FooterBar.defaultProps = {
+    visible: false
 }
 
 

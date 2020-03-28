@@ -20,7 +20,8 @@ class ProductDetail extends Component {
                 imageUrl:'',
                 custom:[]
             },
-            custom:{}
+            custom:{},
+            specialRequest:''
         }
     }
 
@@ -35,12 +36,39 @@ class ProductDetail extends Component {
         return
     }
 
-    handleCustom = () => {
+    isFooterBarVisible = () => {
+        if (Object.keys(this.state.product.custom).length == 0) {
+            return true
+        } else {
+            return (this.areRequiredFieldsFilled())
+        }
+    }
+
+    areRequiredFieldsFilled = () => {
+        let filled = true;
+        let keys = this.state.product.custom.map((c)=>c.name)
+        for (let i = 0; i < keys.length; i++){
+            let key = keys[i];
+            let {required} = this.state.product.custom.find((o)=>o.name==key)
+            if (!required) continue
+            if (required && !(key in this.state.custom)) filled = false;
+        }
+        return filled
+    }
+
+    onSubmit = () => {
 
     }
 
-    handleRequest = () => {
+    handleCustom = (name, value) => {
+        this.setState((state)=>{
+            state.custom[name]=value
+            return state}
+        )
+    }
 
+    handleSpecialRequest = (value) => {
+        this.setState({specialRequest:value})
     }
 
     renderSelectors = () => {
@@ -48,7 +76,8 @@ class ProductDetail extends Component {
         if (custom.length == 0) return 
         return <React.Fragment>
             <h6>Options</h6>
-            {custom.map(({name, options, multiple})=>(<Selector onUpdate={this.handleCustom}
+            {custom.map(({name, options, multiple, required})=>(<Selector 
+                onUpdate={this.handleCustom} required={required}
                 options={options} key={name} multiple={multiple} name={name}/>
             ))}
         </React.Fragment>
@@ -57,6 +86,7 @@ class ProductDetail extends Component {
     render(){
         let {price, name, imageUrl} = this.state.product
         price = `$ ${price.toFixed(2)}`
+        let footerBarVisible = this.isFooterBarVisible()
 
 
         return <div id='product-detail'>
@@ -65,8 +95,8 @@ class ProductDetail extends Component {
             <BasicInfo title={name} imageUrl={imageUrl} subtitle={price}/>
             {this.renderSelectors()}
             <h6>Special Requests</h6>
-            <TextBox placeholder='Any special request?'></TextBox>
-            <DetailFooterBar />
+            <TextBox placeholder='Any special request?' onUpdate={this.handleSpecialRequest}></TextBox>
+            <DetailFooterBar visible={footerBarVisible} price={price}/>
         </div>
     }
 }

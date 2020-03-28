@@ -13,7 +13,7 @@ class TextBox extends Component {
     }
 
     handleChange = (text) => {
-        if (this.props.handleChange) this.props.handleChange(text)
+        if (this.props.handleChange) this.props.onUpdate(text)
     }
 
     render(){

@@ -21,7 +21,7 @@ class DetailFooterBar extends Component {
     }
 
     handleSubmit = () => {
-
+        (this.props.onSubmit) ? this.props.onSubmit() : null
     }
 
     render(){
@@ -48,7 +48,7 @@ function AddWithPriceButton(props){
     return (
         <div onClick={props.onClick} className='add-with-price'>
             <h5>ADD PRODUCT</h5>
-            <h5>$21.02</h5>
+            <h5>{props.price}</h5>
         </div>
     )
 }
