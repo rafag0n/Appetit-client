@@ -9,6 +9,11 @@ class Selector extends Component {
             selected: []
         }
     }
+    
+    componentDidMount(){
+        if (this.props.defaultSelected != null) this.setState({selected: this.props.defaultSelected});
+    }
+
 
     handleRadioChange = (value) => {
         this.setState({selected:[value]}, this.handleUpdate)

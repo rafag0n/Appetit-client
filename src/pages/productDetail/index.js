@@ -16,7 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
     addProduct: (payload) => dispatch({type:actions.product.ADD, payload})
 })
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    selectedProducts: state.product
+})
 
 
 class ProductDetail extends Component {
@@ -37,12 +39,26 @@ class ProductDetail extends Component {
     }
 
     componentDidMount(){
-        this.loadProductData()
+        let _id = this.getProductId()
+        this.loadProductData(_id)
+        this.setExistingData(_id)
+
     }
 
-    loadProductData = async () => {
+    setExistingData = (_id) => {
+        let selected =  Object.keys(this.props.selectedProducts).find((selectedId)=>selectedId == _id)
+        if (selected === undefined) return;
+        let {custom, specialRequest,quantity} = this.props.selectedProducts[_id]
+        this.setState({custom, specialRequest, quantity})
+    }
+
+    getProductId = () => {
         let query = queryString.parse(this.props.location.search)
-        let product = await order.loadProductData(query.q)
+        return query.q
+    }
+
+    loadProductData = async (_id) => {
+        let product = await order.loadProductData(_id)
         this.setState({product})
         return
     }
@@ -91,16 +107,30 @@ class ProductDetail extends Component {
         this.setState({quantity})
     }
 
+    
+
     renderSelectors = () => {
         const {custom} = this.state.product
+        const existingCustoms = this.getExistingCustoms(this.state.product._id)
         if (custom.length == 0) return 
         return <React.Fragment>
             <h6>Options</h6>
-            {custom.map(({name, options, multiple, required})=>(<Selector 
-                onUpdate={this.handleCustom} required={required}
-                options={options} key={name} multiple={multiple} name={name}/>
-            ))}
+            {custom.map((SingleCustom)=>this.renderOneSelector(SingleCustom, existingCustoms))}
         </React.Fragment>
+    }
+
+
+    getExistingCustoms = (_id) => {
+        let existingCustoms =  (this.props.selectedProducts[_id] != undefined) ? this.props.selectedProducts[_id].custom : null
+        return existingCustoms
+    }
+
+
+    renderOneSelector = ({name, options, multiple, required}, existingCustoms) => {
+        let selectorDefaults = (existingCustoms && name in existingCustoms) ? existingCustoms[name] : null
+        return <Selector 
+        onUpdate={this.handleCustom} required={required} defaultSelected={selectorDefaults}
+        options={options} key={name} multiple={multiple} name={name}/>
     }
 
     render(){
@@ -117,7 +147,7 @@ class ProductDetail extends Component {
             <BasicInfo title={name} imageUrl={imageUrl} subtitle={price}/>
             {this.renderSelectors()}
             <h6>Special Requests</h6>
-            <TextBox placeholder='Any special request?' onUpdate={this.handleSpecialRequest}></TextBox>
+            <TextBox placeholder='Any special request?' value={this.state.specialRequest} onUpdate={this.handleSpecialRequest}></TextBox>
             <DetailFooterBar onSubmit={this.onSubmit} onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
         </div>
     }
