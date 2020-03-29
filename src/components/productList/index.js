@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import './style.scss'
 
 function ProductList(props) {
+
     let history = useHistory()
 
     let productDetailLink = (product) =>{
@@ -27,11 +28,16 @@ function ProductList(props) {
         history.push(productDetailLink(product))
     }
 
+    let isSelected = (productId) => {
+        return productId in props.selected
+    }
+
     let renderProducts = (products) => {
         products = sortByName(products)
         return products.map((product)=>{
             let secondaryValue = `$ ${product.price.toFixed(2)}`
-            return <ListItem key={product._id} onClick={()=>{navigateTo(product)}}
+            let selected = isSelected(product._id)
+            return <ListItem selected={selected} key={product._id} onClick={()=>{navigateTo(product)}}
             item={product.name} imageUrl={product.imageUrl} secondaryValue={secondaryValue}/>
         })
     }

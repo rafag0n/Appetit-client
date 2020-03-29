@@ -1,35 +1,27 @@
-import React, {Component} from 'react'
+import React from 'react'
 import FooterBar from '../footerBar'
 import Minus from '../../public/icons/minus.svg'
 import Add from '../../public/icons/add.svg'
 import './style.scss'
 
-class DetailFooterBar extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            quantity: 1
-        }
+function DetailFooterBar (props) {
+    
+
+    let handleQuantityChange = (value) => {
+        if (value == -1 && props.quantity == 1) return
+        let quantity = props.quantity+(value)
+        props.onQuantityChange(quantity)
     }
 
-    handleQuantityChange = (value) => {
-        if (value == -1 && this.state.quantity == 1) return
-        this.setState((state)=>{
-            state.quantity+=(value)
-            return state
-        })
+    let handleSubmit = () => {
+        (props.onSubmit) ? props.onSubmit() : null
     }
 
-    handleSubmit = () => {
-        (this.props.onSubmit) ? this.props.onSubmit() : null
-    }
-
-    render(){
-        return <div className='detail-footer-bar'>
-            <QuantitySelector onChange={this.handleQuantityChange} quantity={this.state.quantity}/>
-            <AddWithPriceButton price={this.props.price} onClick={this.handleSubmit}/>
-        </div>
-    }
+    
+    return <div className='detail-footer-bar'>
+        <QuantitySelector onChange={handleQuantityChange} quantity={props.quantity}/>
+        <AddWithPriceButton price={props.price} onClick={handleSubmit}/>
+    </div>
 }
 
 function QuantitySelector(props){

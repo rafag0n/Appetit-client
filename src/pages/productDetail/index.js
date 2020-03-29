@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import actions from '../../redux/actions'
 import { withRouter } from 'react-router'
 import TopText from '../../components/topText/'
 import BasicInfo from '../../components/basicInfo'
@@ -10,18 +12,27 @@ import queryString from 'query-string'
 import './style.scss'
 
 
+const mapDispatchToProps = (dispatch) => ({
+    addProduct: (payload) => dispatch({type:actions.product.ADD, payload})
+})
+
+const mapStateToProps = (state) => ({})
+
+
 class ProductDetail extends Component {
     constructor(props){
         super(props);
         this.state = {
             product: {
+                _id: '',
                 price:0,
                 name:'',
                 imageUrl:'',
                 custom:[]
             },
             custom:{},
-            specialRequest:''
+            specialRequest:'',
+            quantity: 1
         }
     }
 
@@ -57,7 +68,12 @@ class ProductDetail extends Component {
     }
 
     onSubmit = () => {
-
+        const {custom, specialRequest, quantity} = this.state
+        let payload = {
+            _id: this.state.product._id, price: this.state.product.price,
+            custom,specialRequest,quantity}
+        this.props.addProduct(payload)
+        this.props.history.push('/order/add-products')
     }
 
     handleCustom = (name, value) => {
@@ -69,6 +85,10 @@ class ProductDetail extends Component {
 
     handleSpecialRequest = (value) => {
         this.setState({specialRequest:value})
+    }
+
+    handleQuantity = (quantity) => {
+        this.setState({quantity})
     }
 
     renderSelectors = () => {
@@ -85,7 +105,9 @@ class ProductDetail extends Component {
 
     render(){
         let {price, name, imageUrl} = this.state.product
+        let totalPrice = price * this.state.quantity
         price = `$ ${price.toFixed(2)}`
+        totalPrice = `$ ${totalPrice.toFixed(2)}`
         let footerBarVisible = this.isFooterBarVisible()
 
 
@@ -96,9 +118,10 @@ class ProductDetail extends Component {
             {this.renderSelectors()}
             <h6>Special Requests</h6>
             <TextBox placeholder='Any special request?' onUpdate={this.handleSpecialRequest}></TextBox>
-            <DetailFooterBar visible={footerBarVisible} price={price}/>
+            <DetailFooterBar onSubmit={this.onSubmit} onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
         </div>
     }
 }
 
-export default withRouter(ProductDetail)
+const routedProductDetail = withRouter(ProductDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(routedProductDetail)
