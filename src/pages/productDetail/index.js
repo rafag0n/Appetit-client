@@ -13,7 +13,8 @@ import './style.scss'
 
 
 const mapDispatchToProps = (dispatch) => ({
-    addProduct: (payload) => dispatch({type:actions.product.ADD, payload})
+    addProduct: (payload) => dispatch({type:actions.product.ADD, payload}),
+    deleteProduct: (_id) => dispatch({type:actions.product.REMOVE, _id})
 })
 
 const mapStateToProps = (state) => ({
@@ -34,7 +35,8 @@ class ProductDetail extends Component {
             },
             custom:{},
             specialRequest:'',
-            quantity: 1
+            quantity: 1,
+            deleteEnabled:false
         }
     }
 
@@ -42,14 +44,13 @@ class ProductDetail extends Component {
         let _id = this.getProductId()
         this.loadProductData(_id)
         this.setExistingData(_id)
-
     }
 
     setExistingData = (_id) => {
         let selected =  Object.keys(this.props.selectedProducts).find((selectedId)=>selectedId == _id)
         if (selected === undefined) return;
         let {custom, specialRequest,quantity} = this.props.selectedProducts[_id]
-        this.setState({custom, specialRequest, quantity})
+        this.setState({custom, specialRequest, quantity, deleteEnabled:true})
     }
 
     getProductId = () => {
@@ -89,7 +90,17 @@ class ProductDetail extends Component {
             _id: this.state.product._id, price: this.state.product.price,
             custom,specialRequest,quantity}
         this.props.addProduct(payload)
+        this.proceedToNextPage()
+    }
+
+    proceedToNextPage = () => {
         this.props.history.push('/order/add-products')
+    }
+
+    onDelete = () => {
+        let id = this.getProductId()
+        this.props.deleteProduct(id)
+        this.proceedToNextPage()
     }
 
     handleCustom = (name, value) => {
@@ -133,13 +144,13 @@ class ProductDetail extends Component {
         options={options} key={name} multiple={multiple} name={name}/>
     }
 
+
     render(){
         let {price, name, imageUrl} = this.state.product
         let totalPrice = price * this.state.quantity
         price = `$ ${price.toFixed(2)}`
         totalPrice = `$ ${totalPrice.toFixed(2)}`
         let footerBarVisible = this.isFooterBarVisible()
-
 
         return <div id='product-detail'>
             <TopText value='Order Details'/>
@@ -148,7 +159,8 @@ class ProductDetail extends Component {
             {this.renderSelectors()}
             <h6>Special Requests</h6>
             <TextBox placeholder='Any special request?' value={this.state.specialRequest} onUpdate={this.handleSpecialRequest}></TextBox>
-            <DetailFooterBar onSubmit={this.onSubmit} onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
+            <DetailFooterBar onSubmit={this.onSubmit}  deleteEnabled={this.state.deleteEnabled} handleDelete={this.onDelete}
+            onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
         </div>
     }
 }

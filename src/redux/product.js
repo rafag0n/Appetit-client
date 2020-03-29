@@ -20,12 +20,14 @@ let productReducer = (state= initialState, action) =>{
 
 
 let removeProductFromStore = (state, action) => {
-    const {productId} = action.payload
+    const _id = action._id
     let newObject = {}
-    Object.keys(state).forEach((product)=>{
-        if (product._id != productId) newObject[product._id] = product
+    Object.keys(state).forEach((productId)=>{
+        if (productId != _id) {
+            newObject[productId] = state[productId]
+        }
     })
-    return Object.assign({}, state, newObject)
+    return newObject
 }
 
 let addProductToStore = (state, action) => {

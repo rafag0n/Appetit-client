@@ -2,6 +2,7 @@ import React from 'react'
 import FooterBar from '../footerBar'
 import Minus from '../../public/icons/minus.svg'
 import Add from '../../public/icons/add.svg'
+import Button from '../button'
 import './style.scss'
 
 function DetailFooterBar (props) {
@@ -17,9 +18,21 @@ function DetailFooterBar (props) {
         (props.onSubmit) ? props.onSubmit() : null
     }
 
+    let handleDelete = () => {
+        if (props.handleDelete()) props.handleDelete()
+    }
+
+    let renderDeleteButton = () => {
+        if (props.deleteEnabled) {
+            return <Button type='ghost' onClick={handleDelete} text='Delete'></Button>
+        }
+    }
+
     
     return <div className='detail-footer-bar'>
         <QuantitySelector onChange={handleQuantityChange} quantity={props.quantity}/>
+        {renderDeleteButton()}
+        <div className='flex-one'/>
         <AddWithPriceButton price={props.price} onClick={handleSubmit}/>
     </div>
 }
