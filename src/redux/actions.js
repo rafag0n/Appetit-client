@@ -4,4 +4,9 @@ let product = {
     MODIFY: 'MODIFY_PRODUCT'
 }
 
-export default {product};
+let customer = {
+    ADD: 'ADD_CUSTOMER',
+    REMOVE: 'REMOVE_CUSTOMER',
+}
+
+export default {product, customer};

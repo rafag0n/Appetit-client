@@ -14,7 +14,7 @@ let onClick = (item, history) => {
 }
 
 
-let ProductList = List(secondaryValueSetter,onClick)
+let ProductList = List(onClick,secondaryValueSetter,true)
 
 
 export default ProductList

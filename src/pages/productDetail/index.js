@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
-    selectedProducts: state.product
+    selectedProducts: state.products
 })
 
 
@@ -59,7 +59,8 @@ class ProductDetail extends Component {
     }
 
     loadProductData = async (_id) => {
-        let product = await order.loadProductData(_id)
+        let accessToken = ''
+        let product = await order.loadProductData(accessToken, _id)
         this.setState({product})
         return
     }

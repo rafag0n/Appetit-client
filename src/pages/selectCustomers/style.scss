@@ -1,0 +1,22 @@
+#select-customers {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#select-customers .search-bar {
+    margin-top: 5px;
+}
+
+#select-customers .progress-bar {
+    margin-top: 30px;
+}
+
+#select-customers>p {
+    margin-top: 15px;
+}
+
+#select-customers>h6 {
+    margin-top: 20px;
+}

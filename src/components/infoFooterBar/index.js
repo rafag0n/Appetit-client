@@ -6,11 +6,11 @@ import './style.scss'
 function InfoFooterBar(props) {
 
     
-    let handleSubmit = () => {
-        (props.onSubmit) ? props.onSubmit() : null
+    let onClick = () => {
+        (props.onClick) ? props.onClick() : null
     }
     
-    return <div className='info-footer-bar' onClick={handleSubmit}>
+    return <div className='info-footer-bar' onClick={onClick}>
         <h6>Total: {props.info}</h6>
         <h6>Next</h6>
         <img src={Next} className='info-footer-bar--icon'/>

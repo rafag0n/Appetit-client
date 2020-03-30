@@ -4,7 +4,7 @@ import {withRouter} from 'react-router'
 import TopText from '../../components/topText/'
 import ProgressBar from '../../components/progressBar/'
 import SearchBar from '../../components/searchBar/'
-import ProductList from '../../components/productList/'
+import ProductList from '../../components/list/productList'
 import InfoFooterBar from '../../components/infoFooterBar'
 import order from '../../mock/api/order'
 import './style.scss'
@@ -12,7 +12,7 @@ import './style.scss'
 
 const mapStateToProps = (state) => {
     return {
-        selected: state.product
+        selected: state.products
     }
 }
 
@@ -51,12 +51,16 @@ class SelectProduct extends Component {
 
 
     loadProducts = async () => {
-        let newProducts = await order.loadProducts(this.state.pageIndex, 10)
+        let AccessToken = ''
+        let newProducts = await order.loadProducts(AccessToken,this.state.pageIndex, 10)
         this.setState((previousState)=>{
             return {products: Array.concat(previousState.products,newProducts)}
         })
     }
 
+    proceedToCustomers = () => {
+        this.props.history.push('/order/add-customers')
+    }
     
     
     
@@ -72,7 +76,7 @@ class SelectProduct extends Component {
             <h6>What are you selling?</h6>
             <SearchBar placeholder='Search for product here'/>
             <ProductList selected={this.props.selected} items={this.state.products}/>
-            <InfoFooterBar info={totalValue} visible={footerBarVisible}/>
+            <InfoFooterBar info={totalValue} visible={footerBarVisible} onClick={this.proceedToCustomers}/>
         </div>
     }
 }

@@ -4,12 +4,15 @@ import { useHistory } from "react-router-dom";
 import './style.scss'
 
 
-function List (secondaryValueSetter, onClick) {
+function List(onClick, secondaryValueSetter=(()=>{}), needsHistory=false) {
     
+    //secondaryValueSetter(item)
+    //onClick(item,history)
 
     return (props) => {
-
-        let history = useHistory()
+        
+        let history = ''
+        if (needsHistory) history = useHistory()
 
         let sortByCategory = (items) => {
             let output = {}
@@ -32,7 +35,7 @@ function List (secondaryValueSetter, onClick) {
         let renderItems = (items) => {
             items = sortByName(items)
             return items.map((item)=>{
-                let secondaryValue = (secondaryValueSetter) ? secondaryValueSetter(item) : null
+                let secondaryValue = secondaryValueSetter(item)
                 let selected = isSelected(item._id)
                 return <ListItem selected={selected} key={item._id} onClick={()=>onClick(item, history)}
                 item={item.name} imageUrl={item.imageUrl} secondaryValue={secondaryValue}/>
@@ -53,6 +56,7 @@ function List (secondaryValueSetter, onClick) {
         }
 
 
+
         let renderList = () => {
             if (props.items.length == 0) {
                 return <div/>
@@ -70,6 +74,7 @@ function List (secondaryValueSetter, onClick) {
     }
 
 }
+
 
 
 export default List
