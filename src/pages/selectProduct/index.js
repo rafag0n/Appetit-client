@@ -71,7 +71,7 @@ class SelectProduct extends Component {
             <ProgressBar step='1' max='3'/>
             <h6>What are you selling?</h6>
             <SearchBar placeholder='Search for product here'/>
-            <ProductList selected={this.props.selected} products={this.state.products}/>
+            <ProductList selected={this.props.selected} items={this.state.products}/>
             <InfoFooterBar info={totalValue} visible={footerBarVisible}/>
         </div>
     }
