@@ -1,0 +1,22 @@
+#payment-status {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#payment-status .search-bar {
+    margin-top: 5px;
+}
+
+#payment-status .progress-bar {
+    margin-top: 30px;
+}
+
+#payment-status>p {
+    margin-top: 15px;
+}
+
+#payment-status>h6 {
+    margin-top: 20px;
+}

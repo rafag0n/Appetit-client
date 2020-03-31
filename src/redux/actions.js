@@ -9,4 +9,9 @@ let customer = {
     REMOVE: 'REMOVE_CUSTOMER',
 }
 
-export default {product, customer};
+let payment = {
+    STATUS: 'SET_PAYMENT_STATUS',
+    DATE: 'SET_PAYMENT_DATE',
+}
+
+export default {product, customer, payment};

@@ -51,6 +51,10 @@ class SelectCustomers extends Component {
         return Object.keys(this.props.selected).length
     }
 
+    proceedToPayment = () => {
+        this.props.history.push('/order/payment')
+    }
+
     
     render(){
         let totalValue = `${this.calculateTotal()} customers selected`
@@ -63,7 +67,7 @@ class SelectCustomers extends Component {
             <h6>Who are you selling to? (You can select more than one)</h6>
             <SearchBar placeholder='Search for customer here'/>
             <CustomerList selected={this.props.selected} items={this.state.customers}/>
-            <InfoFooterBar info={totalValue} visible={footerBarVisible}/>
+            <InfoFooterBar info={totalValue} onClick={this.proceedToPayment} visible={footerBarVisible}/>
         </div>
     }
 }
