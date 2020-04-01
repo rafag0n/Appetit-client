@@ -3,6 +3,7 @@ import moment from 'moment'
 import Button from '../../components/button'
 import forth from '../../public/icons/forth.svg'
 import back from '../../public/icons/back.svg'
+import PropTypes from 'prop-types'
 import './style.scss'
 
 
@@ -75,7 +76,11 @@ class DatePicker extends Component {
     }
 
     handleSubmit = () => {
-        if (this.props.onSubmit) this.props.onSubmit(this.state.selectedDate)
+        if (this.props.onSubmit) this.props.onSubmit()
+    }
+
+    handleChange = () => {
+        if (this.props.onChange) this.props.onChange(this.state.selectedDate)
     }
 
     formatCalendar = (dateNodes) => {
@@ -100,7 +105,7 @@ class DatePicker extends Component {
     }
 
     changeSelectedDate = (dateString) => {
-        this.setState({selectedDate: moment(dateString)})
+        this.setState({selectedDate: moment(dateString)}, this.handleChange)
     }
 
     renderMonthSelector = () =>  {
@@ -170,6 +175,13 @@ class DatePicker extends Component {
     }
 
 
+}
+
+DatePicker.propTypes = {
+    onCancel: PropTypes.func,
+    onSubmit: PropTypes.func,
+    onChange: PropTypes.func,
+    selectedDate: PropTypes.any
 }
 
 

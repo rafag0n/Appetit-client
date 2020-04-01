@@ -1,0 +1,73 @@
+import React, {Component} from 'react'
+import InputBox from '../inputBox'
+import './style.scss'
+import PropTypes from 'prop-types'
+import DatePicker from '../datePicker'
+import moment from 'moment'
+import Calendar from '../../public/icons/calendar.svg'
+
+class DateInput extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            focused:false,
+            date: moment()
+        }
+    }
+
+    onFocus = () => {
+        this.setState({focused: true})
+    }
+
+    onBlur = () => {
+        this.setState({focused: false})
+    }
+
+    onChange = (date) => {
+        this.setState({date: date})
+    }
+
+    onSubmit = () => {
+        this.setState({focused: false})
+    }
+
+    onCancel = () => {
+        this.setState({focused: false})
+    }
+
+    onClick = () => {
+        this.setState((prev)=>({focused:!prev.focused}))
+    }
+
+    renderCalendar = () => {
+        if (this.state.focused) return <DatePicker 
+        onCancel={this.onCancel} selectedDate={this.state.date} onChange={this.onChange} onSubmit={this.onSubmit} />
+    }
+
+    
+
+    render() {
+        let dateString = this.state.date.format('DD/MM/YYYY')
+        return <div className='date-input'>
+            <div onClick={this.onClick} className='input-zone'>
+                <InputBox label={this.props.label} focused={this.state.focused} value={this.props.value}>
+                    <div className='date-string'>{dateString}</div>
+                </InputBox>
+            </div>
+            <img onClick={this.onClick} src={Calendar} className='calendar-icon'></img>
+            {this.renderCalendar()}
+        </div>
+    }
+
+}
+
+
+DateInput.propTypes = {
+    handleChange: PropTypes.func,
+    label: PropTypes.string, //aka label
+    value: PropTypes.string,
+}
+
+
+
+export default DateInput

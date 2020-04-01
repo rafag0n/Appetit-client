@@ -5,7 +5,7 @@ import TopText from '../../components/topText/'
 import ProgressBar from '../../components/progressBar/'
 import Selector from '../../components/selector'
 import actions from '../../redux/actions'
-import DatePicker from '../../components/datePicker'
+import DateInput from '../../components/dateInput'
 import './style.scss'
 
 
@@ -30,6 +30,7 @@ function PaymentStatus (props){
         if (props.isPaid) {
             return <React.Fragment>
                 <h6>When was the payment Submitted?</h6>
+                <DateInput label='Payment Date' value={'05/11/1993'} handleChange={()=>{}}/>
             </React.Fragment>
         }
     }
@@ -57,7 +58,7 @@ function PaymentStatus (props){
             <h6>What is the payment status?</h6>
             {renderSelector()}
             {renderDatePicker()}
-            <DatePicker month={10} year={2019}/>
+            
         </div>
     
 }
