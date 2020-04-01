@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import logo from '../../public/icons/logo.svg'
-import TextInput from '../../components/textInput'
+import TextInput from '../../components/inputBox/textInput'
 import Button from '../../components/button'
 import Auth from '../../mock/api/auth'
 import './style.scss'

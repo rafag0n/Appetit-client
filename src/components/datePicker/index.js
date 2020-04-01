@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import moment from 'moment'
+import Button from '../../components/button'
 import forth from '../../public/icons/forth.svg'
 import back from '../../public/icons/back.svg'
 import './style.scss'
@@ -21,6 +22,17 @@ class DatePicker extends Component {
         this.state={
             displayDate: moment().startOf('month'),
             selectedDate: moment()
+        }
+    }
+
+    componentDidMount() {
+        this.checkForPreviousSelectedDate()
+    }
+
+    checkForPreviousSelectedDate = () => {
+        if (this.props.selectedDate){
+            let {selectedDate} = this.props
+            this.setState({selectedDate, displayDate: selectedDate.startOf('month')})
         }
     }
 
@@ -56,6 +68,14 @@ class DatePicker extends Component {
             dateNodes.unshift(<td className='date-picker--date-slot'></td>)
         }   
         return dateNodes;
+    }
+
+    handleCancel = () => {
+        if (this.props.onCancel) this.props.onCancel();
+    }
+
+    handleSubmit = () => {
+        if (this.props.onSubmit) this.props.onSubmit(this.state.selectedDate)
     }
 
     formatCalendar = (dateNodes) => {
@@ -99,6 +119,7 @@ class DatePicker extends Component {
         let calendar = this.formatCalendar(calendarChildren)
         return (<table className='date-picker--calendar'>
             <tbody className='date-picker--calendar-body'>
+                {this.renderDaysOfWeek()}
                 {calendar}
             </tbody>
         </table>)
@@ -108,6 +129,14 @@ class DatePicker extends Component {
         let lastDigit = parseInt(String(date).slice(-1))
         let suffix = dateSuffix[(date > 20) ? lastDigit : Math.min(date, 4)] 
         return suffix
+    }
+
+    renderDaysOfWeek = () => {
+        let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        let children = days.map((day)=>{
+            return <td className='date-picker--day-of-week'>{day}</td>
+        })
+        return <tr>{children}</tr>
     }
 
 
@@ -132,6 +161,10 @@ class DatePicker extends Component {
                 {this.renderSelectedDate()}
                 {this.renderMonthSelector()}
                 {this.renderCalendar()}
+                <div className='row'>
+                    <Button onClick={this.handleCancel} type='ghost' text='Cancel'/>
+                    <Button onClick={this.handleSubmit} type='ghost' text='Confirm'/>
+                </div>
             </div>
         )
     }
@@ -146,7 +179,7 @@ let DateButton = ({selected, date, dateString, onClick}) => {
     selected = (selected) ? 'selected': null
     let className = `date-picker--date-slot enabled ${selected}`
     
-    return <td onClick='' onClick={()=>onClick(dateString)} 
+    return <td  onClick={()=>onClick(dateString)} 
     className={className}>{date}</td>
 }
 

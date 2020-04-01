@@ -13,7 +13,7 @@ class Button extends Component {
 
     onClick = (event) => {
         event.preventDefault()
-        if (this.props.enabled) this.props.onClick(event) 
+        if (this.props.enabled && this.props.onClick) this.props.onClick(event) 
     }
 
     commonButton = () => {
@@ -46,7 +46,7 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
-    type: PropTypes.oneOf(['primary','secondary','ghost','add', 'add-product'])
+    type: PropTypes.oneOf(['primary','secondary','ghost','add'])
 }
 
 
