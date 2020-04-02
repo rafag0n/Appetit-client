@@ -10,8 +10,7 @@ class DateInput extends Component {
     constructor(props){
         super(props)
         this.state = {
-            focused:false,
-            date: moment()
+            focused:false
         }
     }
 
@@ -24,7 +23,7 @@ class DateInput extends Component {
     }
 
     onChange = (date) => {
-        this.setState({date: date})
+        this.props.handleChange(date)
     }
 
     onSubmit = () => {
@@ -41,16 +40,16 @@ class DateInput extends Component {
 
     renderCalendar = () => {
         if (this.state.focused) return <DatePicker 
-        onCancel={this.onCancel} selectedDate={this.state.date} onChange={this.onChange} onSubmit={this.onSubmit} />
+        onCancel={this.onCancel} selectedDate={this.props.value} onChange={this.onChange} onSubmit={this.onSubmit} />
     }
 
     
 
     render() {
-        let dateString = this.state.date.format('DD/MM/YYYY')
+        let dateString = this.props.value.format('DD/MM/YYYY')
         return <div className='date-input'>
             <div onClick={this.onClick} className='input-zone'>
-                <InputBox label={this.props.label} focused={this.state.focused} value={this.props.value}>
+                <InputBox label={this.props.label} focused={this.state.focused} value={dateString}>
                     <div className='date-string'>{dateString}</div>
                 </InputBox>
             </div>
@@ -65,7 +64,7 @@ class DateInput extends Component {
 DateInput.propTypes = {
     handleChange: PropTypes.func,
     label: PropTypes.string, //aka label
-    value: PropTypes.string,
+    value: PropTypes.any,
 }
 
 

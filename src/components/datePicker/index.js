@@ -21,21 +21,10 @@ class DatePicker extends Component {
     constructor(props){
         super(props);
         this.state={
-            displayDate: moment().startOf('month'),
-            selectedDate: moment()
+            displayDate: moment(),
         }
     }
-
-    componentDidMount() {
-        this.checkForPreviousSelectedDate()
-    }
-
-    checkForPreviousSelectedDate = () => {
-        if (this.props.selectedDate){
-            let {selectedDate} = this.props
-            this.setState({selectedDate, displayDate: selectedDate.startOf('month')})
-        }
-    }
+    
 
     createDateString = (date) => {
         const {displayDate} = this.state;
@@ -56,31 +45,28 @@ class DatePicker extends Component {
 
     renderOneDate = (date) => {
         let dateString = this.createDateString(date)
-        let selected = (dateString == this.state.selectedDate.format('YYYY-MM-DD'))
-        return <DateButton onClick={this.changeSelectedDate}
+        let selected = (dateString == this.props.selectedDate.format('YYYY-MM-DD'))
+        return <DateButton onClick={this.handleChange}
         dateString={dateString} selected={selected} date={date}/>
     }
 
 
     insertEmptySpaces = (dateNodes) => {
         let {displayDate} = this.state
-        let numberSpaces = displayDate.day();
+        let numberSpaces = displayDate.startOf('month').day();
         for (let spaces=0; spaces<numberSpaces; spaces++){
             dateNodes.unshift(<td className='date-picker--date-slot'></td>)
         }   
         return dateNodes;
     }
 
-    handleCancel = () => {
-        if (this.props.onCancel) this.props.onCancel();
-    }
 
     handleSubmit = () => {
         if (this.props.onSubmit) this.props.onSubmit()
     }
 
-    handleChange = () => {
-        if (this.props.onChange) this.props.onChange(this.state.selectedDate)
+    handleChange = (dateString) => {
+        if (this.props.onChange) this.props.onChange(moment(dateString))
     }
 
     formatCalendar = (dateNodes) => {
@@ -104,9 +90,7 @@ class DatePicker extends Component {
         })
     }
 
-    changeSelectedDate = (dateString) => {
-        this.setState({selectedDate: moment(dateString)}, this.handleChange)
-    }
+    
 
     renderMonthSelector = () =>  {
         let {displayDate} = this.state
@@ -146,7 +130,7 @@ class DatePicker extends Component {
 
 
     renderSelectedDate = () => {
-        const {selectedDate} = this.state
+        const {selectedDate} = this.props
         let date = selectedDate.date()
         let month = selectedDate.format('MMMM')
         let year = selectedDate.year()
@@ -167,7 +151,6 @@ class DatePicker extends Component {
                 {this.renderMonthSelector()}
                 {this.renderCalendar()}
                 <div className='row'>
-                    <Button onClick={this.handleCancel} type='ghost' text='Cancel'/>
                     <Button onClick={this.handleSubmit} type='ghost' text='Confirm'/>
                 </div>
             </div>
@@ -178,10 +161,9 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
-    onCancel: PropTypes.func,
     onSubmit: PropTypes.func,
     onChange: PropTypes.func,
-    selectedDate: PropTypes.any
+    selectedDate: PropTypes.objectOf(moment())
 }
 
 

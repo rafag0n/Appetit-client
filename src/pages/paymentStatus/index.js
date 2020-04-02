@@ -6,6 +6,8 @@ import ProgressBar from '../../components/progressBar/'
 import Selector from '../../components/selector'
 import actions from '../../redux/actions'
 import DateInput from '../../components/dateInput'
+import InfoFooterBar from '../../components/infoFooterBar'
+import moment from 'moment'
 import './style.scss'
 
 
@@ -27,29 +29,40 @@ const mapDispatchToProps = (dispatch) => {
 function PaymentStatus (props){
 
     let renderDatePicker = () => {
+        let date = (props.date != null) ? props.date : moment()
+
         if (props.isPaid) {
             return <React.Fragment>
                 <h6>When was the payment Submitted?</h6>
-                <DateInput label='Payment Date' value={'05/11/1993'} handleChange={()=>{}}/>
+                <DateInput label='Payment Date' value={date} handleChange={handleDateChange}/>
             </React.Fragment>
         }
     }
 
-    let handleCustom = (name, selected) => {
+    let handlePaymentStatusChange = (_, selected) => {
         let value = selected[0]
         if (value == 'Not paid') value = false;
         else value = true
         props.setPaymentStatus(value)
     }
 
+    let handleDateChange = (date) => {
+        props.setDate(date)
+    }
+
     let renderSelector = () => {
         let selectorDefaults = (props.isPaid) 
         let options = ['Not paid', 'Already Paid']
         return <Selector 
-        onUpdate={handleCustom} required={true} defaultSelected={selectorDefaults}
+        onUpdate={handlePaymentStatusChange} required={true} defaultSelected={selectorDefaults}
         options={options} key={name} multiple={false} name={name}/>
     }
 
+    let proceedToCheckout = () => {
+        props.history.push('/order/success')
+    }
+
+    let footerBarVisible = (props.isPaid != null) ? true : false
 
     return <div id='payment-status'>
             <TopText value='Order Information'/>
@@ -58,7 +71,8 @@ function PaymentStatus (props){
             <h6>What is the payment status?</h6>
             {renderSelector()}
             {renderDatePicker()}
-            
+            <InfoFooterBar info={''} visible={footerBarVisible} onClick={proceedToCheckout}/>
+
         </div>
     
 }

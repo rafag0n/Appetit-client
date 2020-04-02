@@ -1,8 +1,9 @@
 import defaultActions from './actions'
+import moment from 'moment'
 
 const initialState = {
-    isPaid: false,
-    date: ''
+    isPaid: null,
+    date: null,
 }
 
 const {payment} = defaultActions

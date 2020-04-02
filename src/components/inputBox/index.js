@@ -7,7 +7,7 @@ function InputBox (props){
     
     let borderStylePrefix = 'input-box__border-'
     let state = props.focused ? 'focused' : 'blurred'
-    let labelState = (props.value.length > 0 && !props.focused) ? 'with-text' : state
+    let labelState = (props.value && props.value.length > 0 && !props.focused) ? 'with-text' : state
         
     return (
         <div className='input-box'>
