@@ -9,6 +9,8 @@ let customerReducer = (state= initialState, action) =>{
             return addCustomerToStore(state,action)
         case customer.REMOVE:
             return removeCustomerFromStore(state,action)
+        case customer.CLEAR:
+            return initialState;
         default:
             return state
             break;

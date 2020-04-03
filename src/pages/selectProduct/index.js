@@ -7,6 +7,7 @@ import SearchBar from '../../components/searchBar/'
 import ProductList from '../../components/list/productList'
 import InfoFooterBar from '../../components/infoFooterBar'
 import order from '../../mock/api/order'
+import OrderHoc from '../OrderHoc'
 import './style.scss'
 
 
@@ -81,4 +82,4 @@ class SelectProduct extends Component {
     }
 }
 
-export default connect(mapStateToProps)(withRouter(SelectProduct))
+export default connect(mapStateToProps)(withRouter(OrderHoc(SelectProduct)))

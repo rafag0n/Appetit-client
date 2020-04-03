@@ -46,7 +46,8 @@ class DatePicker extends Component {
     renderOneDate = (date) => {
         let dateString = this.createDateString(date)
         let selected = (dateString == this.props.selectedDate.format('YYYY-MM-DD'))
-        return <DateButton onClick={this.handleChange}
+        
+        return <DateButton let key={dateString} onClick={this.handleChange}
         dateString={dateString} selected={selected} date={date}/>
     }
 
@@ -55,7 +56,8 @@ class DatePicker extends Component {
         let {displayDate} = this.state
         let numberSpaces = displayDate.startOf('month').day();
         for (let spaces=0; spaces<numberSpaces; spaces++){
-            dateNodes.unshift(<td className='date-picker--date-slot'></td>)
+            const key = `spaces${spaces}`
+            dateNodes.unshift(<td key={key} className='date-picker--date-slot'></td>)
         }   
         return dateNodes;
     }
@@ -75,7 +77,7 @@ class DatePicker extends Component {
         dateNodes.forEach((node, pointer)=>{
             children.push(node)
             if (((pointer+1) % 7 == 0  && pointer > 0)| (pointer%7 != 0 && pointer == dateNodes.length-1)){
-                calendar.push(<tr>{children}</tr>)
+                calendar.push(<tr key={pointer}>{children}</tr>)
                 children = []
             }
         })
@@ -123,7 +125,7 @@ class DatePicker extends Component {
     renderDaysOfWeek = () => {
         let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         let children = days.map((day)=>{
-            return <td className='date-picker--day-of-week'>{day}</td>
+            return <td key={day} className='date-picker--day-of-week'>{day}</td>
         })
         return <tr>{children}</tr>
     }

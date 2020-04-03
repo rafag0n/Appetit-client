@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const initialState = {
     isPaid: null,
-    date: null,
+    date: moment(),
 }
 
 const {payment} = defaultActions
@@ -15,6 +15,8 @@ let paymentReducer = (state= initialState, action) =>{
             return setPaymentStatus(state,action)
         case payment.DATE:
             return setPaymentDate(state,action)
+        case payment.CLEAR:
+            return initialState;
         default:
             return state
             break;

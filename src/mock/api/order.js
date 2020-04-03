@@ -11,6 +11,9 @@ const order = {
     },
     loadCustomers: async (accessToken, page=0, itemsPerPage=10) => {
         return filterByPage(mockCustomers, page, itemsPerPage)
+    },
+    submitOrder: async (accessToken, orderData) => {
+        return true
     }
 }
 

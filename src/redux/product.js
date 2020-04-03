@@ -12,6 +12,8 @@ let productReducer = (state= initialState, action) =>{
             return removeProductFromStore(state,action)
         case product.MODIFY:
             return addProductToStore(state,action)
+        case product.CLEAR:
+            return initialState;
         default:
             return state
             break;

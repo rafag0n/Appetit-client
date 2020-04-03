@@ -1,0 +1,27 @@
+#order-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+
+.order-success--chef {
+    margin-top: 40px;
+    flex: 1;
+}
+
+#order-success .row {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+#order-success button {
+    margin-top: 15px;
+}
+
+

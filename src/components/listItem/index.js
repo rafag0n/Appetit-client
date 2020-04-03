@@ -5,7 +5,7 @@ import './style.scss'
 class ListItem extends Component {
 
     onClick = (item) => {
-        return (this.props.onClick) ? this.props.onClick(item) : ()=>{}
+        return (this.props.clickEnabled && this.props.onClick) ? this.props.onClick(item) : ()=>{}
     }
 
     renderImageOverlay = () => {
@@ -16,9 +16,10 @@ class ListItem extends Component {
     
     render() {
         let secondaryValue = this.props.secondaryValue ? <p>{this.props.secondaryValue}</p> : null
-
+        let enabled = this.props.clickEnabled ? 'enabled-list' : null
+        
         return (
-            <div className='list-item'>
+            <div className={`list-item ${enabled}`}>
                 <div className='list-item--image'>
                     {this.renderImageOverlay()}
                     <img className='list-item--image-inner' onClick={this.onClick} src={this.props.imageUrl}/>
@@ -29,6 +30,11 @@ class ListItem extends Component {
         )
     
     }
+}
+
+
+ListItem.defaultProps = {
+    clickEnabled: true
 }
 
 

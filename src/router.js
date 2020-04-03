@@ -6,6 +6,7 @@ import ProductDetail from './pages/productDetail'
 import SelectCustomers from './pages/selectCustomers'
 import PaymentStatus from './pages/paymentStatus'
 import OrderSuccess from './pages/orderSuccess'
+import Checkout from './pages/checkout'
 import Home from './pages/home'
 import Login from './pages/login'
 import NotFound404 from './pages/notFound'
@@ -17,6 +18,7 @@ class PageRouter extends Component {
             <Router>
             <Switch>
                 <Route exact path="/customer/:id"><CustomerOrders/></Route>
+                <Route exact path="/order/checkout"><Checkout/></Route>
                 <Route exact path="/order/add-products"><SelectProduct/></Route>
                 <Route exact path="/order/products"><ProductDetail/></Route>
                 <Route exact path="/order/add-customers"><SelectCustomers/></Route>

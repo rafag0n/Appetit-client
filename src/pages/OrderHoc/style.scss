@@ -1,0 +1,36 @@
+
+
+@media only screen and (min-width: 800px) {
+    .order {
+        height: 100vh;
+        display: flex;
+        flex-direction: row
+
+    }
+
+    .order-hoc {
+        display: flex;
+        flex-direction: row
+    }
+
+    .side-bar {
+        width: 340px;
+        min-height: 100%;
+    }
+
+    .side-bar {
+        
+    }
+    
+    
+
+    .order > .container > div{
+        overflow-y: scroll;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .order .container {
+        flex: 1
+    }
+}

@@ -56,8 +56,10 @@ class Selector extends Component {
 
     render() {
         
+        let prompt = (this.props.shouldPrompt) ?  <p>Choose your desired {this.props.name}</p> : null
+
         return <div className='selector'>
-            <p>Choose your desired {this.props.name}</p>
+            {prompt}
             {(this.props.required)? <div className='selector-required'>Required</div>:null}
             {this.renderOptions()}
         </div>
@@ -67,7 +69,8 @@ class Selector extends Component {
 
 
 Selector.defaultProps = {
-    required: false
+    required: false,
+    shouldPrompt: true
 }
 
 function RadioOption(props) {

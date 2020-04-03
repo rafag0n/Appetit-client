@@ -1,0 +1,46 @@
+#checkout {
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+#checkout .list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#checkout h4 {
+    margin-top: 20px;
+}
+
+#checkout p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#checkout button {
+    margin-top: 20px;
+    align-self: flex-end
+}
+
+#checkout .list {
+    border-bottom: 1px solid black;
+}
+
+#checkout button {
+    margin-bottom: 20px;
+}
+
+#checkout .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid black;
+}
+
+.checkout-total {
+    color: rgba(0,0,0,0.65)
+}

@@ -9,6 +9,7 @@ import TextBox from '../../components/textBox'
 import DetailFooterBar from '../../components/detailFooterBar'
 import order from '../../mock/api/order'
 import queryString from 'query-string'
+import OrderHoc from '../OrderHoc'
 import './style.scss'
 
 
@@ -87,8 +88,9 @@ class ProductDetail extends Component {
 
     onSubmit = () => {
         const {custom, specialRequest, quantity} = this.state
+        const {_id, price, imageUrl, name} = this.state.product
         let payload = {
-            _id: this.state.product._id, price: this.state.product.price,
+            _id,price,imageUrl, name,
             custom,specialRequest,quantity}
         this.props.addProduct(payload)
         this.proceedToNextPage()
@@ -166,5 +168,5 @@ class ProductDetail extends Component {
     }
 }
 
-const routedProductDetail = withRouter(ProductDetail)
+const routedProductDetail = withRouter(OrderHoc(ProductDetail))
 export default connect(mapStateToProps, mapDispatchToProps)(routedProductDetail)

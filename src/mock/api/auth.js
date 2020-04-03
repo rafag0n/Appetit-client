@@ -4,7 +4,7 @@ const Auth = {
         //payload: {email,password}
         //success: {access token,refresh token}
         //failure: {error}
-        return {error:''}
+        return {body: {accessToken: ''}}
     }
 }
 

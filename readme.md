@@ -20,11 +20,13 @@ This repo contains the client side of a fake platform called Apetit. The goal of
 
 ## Install
 
-This project uses React.JS [React.JS](https://pt-br.reactjs.org/). You will need yarn and npm installed at your machine. To start the development server, just run:
+This project uses React.JS [React.JS](https://pt-br.reactjs.org/). You will need yarn and npm installed at your machine. To install dependencies and start the development server, just run:
 
 ```
 yarn install && yarn start:dev
 ```
+
+You can then visit the app with http://localhost:3000. To pass through login, simply write any email and password.
 
 ## License
 

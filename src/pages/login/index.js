@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import logo from '../../public/icons/logo.svg'
 import TextInput from '../../components/inputBox/textInput'
 import Button from '../../components/button'
-import Auth from '../../mock/api/auth'
+import auth from '../../mock/api/auth'
+import {withRouter} from 'react-router'
 import './style.scss'
 
 
@@ -60,18 +61,22 @@ class Login extends Component {
     attemptLogin = async () => {
         
         const {email,password} = this.state.fields
-        //const res = await auth.login(email, password)
-        return {body:{}}
+        const res = await auth.login(email, password)
+        return res.body
          
     }
 
     onServerResponse = (response) => {
-        if (!response.body.error) {
-            //DO RESPONSE SUCCESS
+        if (!response.error) {
+            this.proceedToHome()
         } else {
             this.setServerError(response.body.error)
             throw err;
         }
+    }
+
+    proceedToHome = () =>{
+        this.props.history.push('/home')
     }
 
 
@@ -189,4 +194,4 @@ function ServerError(props){
      
 }
 
-export default Login
+export default withRouter(Login)

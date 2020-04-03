@@ -2,6 +2,8 @@
     background-color: transparent;
     font-size: 16px;
     font-family: 'Open Sans';
+    padding-top: 12px;
+    padding-bottom: 12px;
     margin-right: 12px;
     margin-left: 12px;
     flex: 1;
@@ -11,12 +13,12 @@
     display: flex;
     align-items: center;
     border: solid;
-    height: 48px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom-width: 1px;
-    border-bottom-color: rgba(0,0,0,0.4)
+    border-bottom-color: rgba(0,0,0,0.4);
+    margin-bottom: 5px;
 }
 
 .search-bar--submit-button:hover {

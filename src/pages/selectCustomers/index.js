@@ -7,8 +7,7 @@ import SearchBar from '../../components/searchBar/'
 import CustomerList from '../../components/list/customerList'
 import InfoFooterBar from '../../components/infoFooterBar'
 import order from '../../mock/api/order'
-import store from '../../redux/store'
-import actions from '../../redux/actions'
+import OrderHoc from '../OrderHoc'
 import './style.scss'
 
 
@@ -33,6 +32,10 @@ class SelectCustomers extends Component {
 
     componentDidMount() {
         this.loadCustomers()
+        window.scrollTo({
+            top: 0,
+            behavior: "auto"
+        });
     }
 
     loadCustomers = async () => {
@@ -66,7 +69,7 @@ class SelectCustomers extends Component {
             <ProgressBar step='2' max='3'/>
             <h6>Who are you selling to? (You can select more than one)</h6>
             <SearchBar placeholder='Search for customer here'/>
-            <CustomerList selected={this.props.selected} items={this.state.customers}/>
+            <CustomerList selected={this.props.selected} items={this.state.customers}/>        
             <InfoFooterBar info={totalValue} onClick={this.proceedToPayment} visible={footerBarVisible}/>
         </div>
     }
@@ -74,4 +77,4 @@ class SelectCustomers extends Component {
 
 
 
-export default connect(mapStateToProps)(withRouter(SelectCustomers))
+export default connect(mapStateToProps)(withRouter(OrderHoc(SelectCustomers)))

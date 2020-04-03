@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import ListItem from '../listItem'
 import { useHistory } from "react-router-dom";
 import './style.scss'
+import PropTypes from 'prop-types'
 
 
-function List(onClick, secondaryValueSetter=(()=>{}), needsHistory=false) {
+function List(onClick = null, secondaryValueSetter=(()=>{}), needsHistory=false) {
     
     //secondaryValueSetter(item)
     //onClick(item,history)
@@ -37,7 +38,7 @@ function List(onClick, secondaryValueSetter=(()=>{}), needsHistory=false) {
             return items.map((item)=>{
                 let secondaryValue = secondaryValueSetter(item)
                 let selected = isSelected(item._id)
-                return <ListItem selected={selected} key={item._id} onClick={()=>onClick(item, history)}
+                return <ListItem  clickEnabled={props.clickEnabled} selected={selected} key={item._id} onClick={()=>onClick(item, history)}
                 item={item.name} imageUrl={item.imageUrl} secondaryValue={secondaryValue}/>
             })
         }
@@ -58,13 +59,16 @@ function List(onClick, secondaryValueSetter=(()=>{}), needsHistory=false) {
 
 
         let renderList = () => {
-            if (props.items.length == 0) {
+                
+            if (Object.keys(props.items).length == 0) {
                 return <div/>
             }
-
+            
             let renderList = (props.items[0].category == null) ? renderItems : renderByCategory    
+            
+            
             return (
-                <div className='product-list'>
+                <div className='list'>
                     {renderList(props.items)}
                 </div>
             );  
@@ -75,6 +79,16 @@ function List(onClick, secondaryValueSetter=(()=>{}), needsHistory=false) {
 
 }
 
+List.defaultProps = {
+    clickEnabled: true
+}
+
+
+List.propTypes = {
+    selected: PropTypes.any,
+    items: PropTypes.arrayOf(PropTypes.object),
+    clickEnabled: PropTypes.bool,
+}
 
 
 export default List

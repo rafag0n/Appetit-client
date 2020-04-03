@@ -1,12 +1,14 @@
 #select-customers {
     padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
     display: flex;
     flex-direction: column;
 }
 
 
 #select-customers .search-bar {
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 #select-customers .progress-bar {

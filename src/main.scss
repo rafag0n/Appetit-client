@@ -1,3 +1,5 @@
+$full-width: 800px;
+
 body {
     padding: 0px;
     margin: 0px;
@@ -20,6 +22,15 @@ h6 {
     font-style: 'Normal';
     font-family: 'Open Sans';
     font-size: 16px;
+    color: rgba(0,0,0,0.88);
+}
+
+h4 {
+    padding: 0px;
+    margin: 0px;
+    font-style: 'Normal';
+    font-family: 'Open Sans';
+    font-size: 20px;
     color: rgba(0,0,0,0.88);
 }
 
