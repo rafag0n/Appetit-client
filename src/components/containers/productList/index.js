@@ -1,4 +1,4 @@
-import List from '../list'
+import List from '../../hoc/list'
 
 
 let secondaryValueSetter = (item) => {

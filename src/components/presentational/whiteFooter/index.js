@@ -1,7 +1,7 @@
 import React from 'react'
 import FooterBar from '../footerBar'
-import Minus from '../../public/icons/minus.svg'
-import Add from '../../public/icons/add.svg'
+import Minus from '../../../public/icons/minus.svg'
+import Add from '../../../public/icons/add.svg'
 import Button from '../button'
 import './style.scss'
 

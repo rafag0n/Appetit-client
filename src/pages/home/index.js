@@ -1,25 +1,25 @@
-import React, {Component} from 'react'
-import TopText from '../../components/topText/'
-import Button from '../../components/button/'
-import SearchBar from '../../components/searchBar/'
+import React from 'react'
 import { withRouter } from 'react-router'
-import OrderHoc from '../OrderHoc'
 import './style.scss'
 
-class Home extends Component {
+import Header from '../../components/presentational/header'
+import Button from '../../components/presentational/button/'
+import SearchBar from '../../components/presentational/searchBar/'
+import Wrapper from '../../components/hoc/wrapper'
 
-    proceedToAddProducts = () => {
-        console.log(this.props)
-        this.props.history.push('/order/add-products')
+function Home (props) {
+
+    let proceedToAddProducts = () => {
+        props.history.push('/order/add-products')
     }
 
-    render(){
-        return <div id='home'>
-            <TopText value='Hi Master!'/>
-            <Button text='Create new order' onClick={this.proceedToAddProducts} type='add'/>
+    
+    return <div id='home'>
+            <Header value='Hi Master!'/>
+            <Button text='Create new order' onClick={proceedToAddProducts} type='add'/>
             <SearchBar placeholder='Search for customer here'/>
         </div>
-    }
+    
 }
 
-export default withRouter(OrderHoc(Home))
+export default withRouter(Wrapper(Home))

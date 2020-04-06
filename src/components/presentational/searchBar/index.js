@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import arrowForward from '../../public/icons/arrowForward.svg'
-import search from '../../public/icons/search.svg'
+import arrowForward from '../../../public/icons/arrowForward.svg'
+import search from '../../../public/icons/search.svg'
 import './style.scss'
 
 

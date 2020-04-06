@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Check from '../../public/icons/check.svg'
+import Check from '../../../public/icons/check.svg'
 import './style.scss'
 
 class ListItem extends Component {

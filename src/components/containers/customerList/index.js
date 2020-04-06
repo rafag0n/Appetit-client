@@ -1,8 +1,6 @@
-import List from '../list'
-import store from '../../redux/store'
-import actions from '../../redux/actions'
-import './style.scss'
-
+import List from '../../hoc/list'
+import store from '../../../redux/store'
+import actions from '../../../redux/actions'
 
 
 let onItemClick = (item) => {

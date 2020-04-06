@@ -1,16 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import TopText from '../../components/topText/'
-import ProgressBar from '../../components/progressBar/'
-import Selector from '../../components/selector'
-import actions from '../../redux/actions'
-import DateInput from '../../components/dateInput'
-import InfoFooterBar from '../../components/infoFooterBar'
-import order from '../../mock/api/order'
 import moment from 'moment'
-import OrderHoc from '../OrderHoc'
 
+import Header from '../../components/presentational/header/'
+import ProgressBar from '../../components/presentational/progressBar/'
+import Selector from '../../components/containers/selector'
+import DateInput from '../../components/presentational/dateInput'
+import OrangeFooter from '../../components/presentational/orangeFooter'
+import Wrapper from '../../components/hoc/wrapper'
+
+import actions from '../../redux/actions'
 import './style.scss'
 
 
@@ -73,17 +73,17 @@ function PaymentStatus (props){
     let footerBarVisible = props.isPaid != null ? true : false;
     
     return <div id='payment-status'>
-            <TopText value='Order Information'/>
+            <Header value='Order Information'/>
             <p>Answer the following questions to register this order:</p>
             <ProgressBar step='3' max='3'/>
             <h6>What is the payment status?</h6>
             {renderSelector()}
             {renderDatePicker()}
-            <InfoFooterBar info={''} onClick={proceedToCheckout} visible={footerBarVisible}/>
+            <OrangeFooter info={''} onClick={proceedToCheckout} visible={footerBarVisible}/>
     </div>
     
 }
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OrderHoc(PaymentStatus)))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Wrapper(PaymentStatus)))

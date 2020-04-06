@@ -1,13 +1,15 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
-import TopText from '../../components/topText/'
-import ProgressBar from '../../components/progressBar/'
-import SearchBar from '../../components/searchBar/'
-import CustomerList from '../../components/list/customerList'
-import InfoFooterBar from '../../components/infoFooterBar'
+
+import Header from '../../components/presentational/header/'
+import ProgressBar from '../../components/presentational/progressBar/'
+import SearchBar from '../../components/presentational/searchBar/'
+import CustomerList from '../../components/containers/customerList'
+import OrangeFooter from '../../components/presentational/orangeFooter'
+import Wrapper from '../../components/hoc/wrapper'
+
 import order from '../../mock/api/order'
-import OrderHoc from '../OrderHoc'
 import './style.scss'
 
 
@@ -64,17 +66,17 @@ class SelectCustomers extends Component {
         let footerBarVisible = this.isFooterBarVisible()
         
         return <div id='select-customers'>
-            <TopText value='Order Information'/>
+            <Header value='Order Information'/>
             <p>Answer the following questions to register this order:</p>
             <ProgressBar step='2' max='3'/>
             <h6>Who are you selling to? (You can select more than one)</h6>
             <SearchBar placeholder='Search for customer here'/>
             <CustomerList selected={this.props.selected} items={this.state.customers}/>        
-            <InfoFooterBar info={totalValue} onClick={this.proceedToPayment} visible={footerBarVisible}/>
+            <OrangeFooter info={totalValue} onClick={this.proceedToPayment} visible={footerBarVisible}/>
         </div>
     }
 }
 
 
 
-export default connect(mapStateToProps)(withRouter(OrderHoc(SelectCustomers)))
+export default connect(mapStateToProps)(withRouter(Wrapper(SelectCustomers)))

@@ -1,15 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import actions from '../../redux/actions'
-import { withRouter } from 'react-router'
-import TopText from '../../components/topText/'
-import BasicInfo from '../../components/basicInfo'
-import Selector from '../../components/selector'
-import TextBox from '../../components/textBox'
-import DetailFooterBar from '../../components/detailFooterBar'
-import order from '../../mock/api/order'
 import queryString from 'query-string'
-import OrderHoc from '../OrderHoc'
+import { withRouter } from 'react-router'
+
+import Header from '../../components/presentational/header/'
+import Info from '../../components/presentational/info'
+import Selector from '../../components/containers/selector'
+import TextBox from '../../components/presentational/textBox'
+import WhiteFooter from '../../components/presentational/whiteFooter'
+import Wrapper from '../../components/hoc/wrapper'
+
+
+import order from '../../mock/api/order'
+import actions from '../../redux/actions'
 import './style.scss'
 
 
@@ -156,17 +159,17 @@ class ProductDetail extends Component {
         let footerBarVisible = this.isFooterBarVisible()
 
         return <div id='product-detail'>
-            <TopText value='Order Details'/>
+            <Header value='Order Details'/>
             <p>You can customize the details of your order here below:</p>
-            <BasicInfo title={name} imageUrl={imageUrl} subtitle={price}/>
+            <Info title={name} imageUrl={imageUrl} subtitle={price}/>
             {this.renderSelectors()}
             <h6>Special Requests</h6>
             <TextBox placeholder='Any special request?' value={this.state.specialRequest} onUpdate={this.handleSpecialRequest}></TextBox>
-            <DetailFooterBar onSubmit={this.onSubmit}  deleteEnabled={this.state.deleteEnabled} handleDelete={this.onDelete}
+            <WhiteFooter onSubmit={this.onSubmit}  deleteEnabled={this.state.deleteEnabled} handleDelete={this.onDelete}
             onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
         </div>
     }
 }
 
-const routedProductDetail = withRouter(OrderHoc(ProductDetail))
+const routedProductDetail = withRouter(Wrapper(ProductDetail))
 export default connect(mapStateToProps, mapDispatchToProps)(routedProductDetail)

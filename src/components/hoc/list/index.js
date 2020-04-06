@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import ListItem from '../listItem'
+import React from 'react'
+import ListItem from '../../presentational/listItem'
 import { useHistory } from "react-router-dom";
 import './style.scss'
 import PropTypes from 'prop-types'

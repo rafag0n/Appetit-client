@@ -1,10 +1,13 @@
 import React from 'react'
+
+import MainItem from '../../presentational/sidebarItems/main'
+import ChildItem from '../../presentational/sidebarItems/child'
+
+import Orders from '../../../public/icons/order.svg'
+import Customers from '../../../public/icons/customer.svg'
+import Logo from '../../../public/icons/logo-wt.svg'
 import './style.scss'
-import Logo from '../../public/icons/logo-wt.svg'
-import MainItem from '../../components/sidebarItems/main'
-import ChildItem from '../../components/sidebarItems/child'
-import Orders from '../../public/icons/order.svg'
-import Customers from '../../public/icons/customer.svg'
+
 
 function Sidebar (props) {
 

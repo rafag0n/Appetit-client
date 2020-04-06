@@ -1,12 +1,13 @@
 import React from 'react'
-import Button from '../../components/button'
 import {withRouter} from 'react-router'
+
+import Wrapper from '../../components/hoc/wrapper'
+import Button from '../../components/presentational/button'
+
 import Chef from '../../public/icons/chef.svg'
-import OrderHoc from '../OrderHoc'
 import './style.scss'
 
 function OrderSuccess (props) {
-    
     
     let registerNewOrder = () => {
         props.history.push('/order/add-products')
@@ -27,4 +28,4 @@ function OrderSuccess (props) {
     
 }
 
-export default withRouter(OrderHoc(OrderSuccess))
+export default withRouter(Wrapper(OrderSuccess))

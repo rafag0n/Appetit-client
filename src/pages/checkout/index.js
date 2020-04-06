@@ -1,14 +1,16 @@
 import React from 'react'
-import Button from '../../components/button';
-import TopText from '../../components/topText'
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router'
-import OrderHoc from '../OrderHoc';
-import order from '../../mock/api/order'
-import actions from '../../redux/actions'
-import './style.scss'
-import CustomerList from '../../components/list/customerList'
-import ProductList from '../../components/list/productList'
+
+import Button from '../../components/presentational/button';
+import Header from '../../components/presentational/header';
+import CustomerList from '../../components/containers/customerList';
+import ProductList from '../../components/containers/productList';
+import Wrapper from '../../components/hoc/wrapper';
+
+import order from '../../mock/api/order';
+import actions from '../../redux/actions';
+import './style.scss';
 
 
 let mapStateToProps = (state) => {
@@ -83,7 +85,7 @@ function Checkout (props) {
 
 
     return <div id='checkout'>
-        <TopText value='Confirm your Order'/>
+        <Header value='Confirm your Order'/>
         <p>You can see the details of your order before confirming:</p>
         <h4>Products</h4>
         <ProductList items={products} clickEnabled={false} selected={[]}/>
@@ -102,4 +104,4 @@ function Checkout (props) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(OrderHoc(Checkout)))
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Wrapper(Checkout)))

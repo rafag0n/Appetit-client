@@ -3,8 +3,7 @@ import InputBox from '../inputBox'
 import './style.scss'
 import PropTypes from 'prop-types'
 import DatePicker from '../datePicker'
-import moment from 'moment'
-import Calendar from '../../public/icons/calendar.svg'
+import Calendar from '../../../public/icons/calendar.svg'
 
 class DateInput extends Component {
     constructor(props){

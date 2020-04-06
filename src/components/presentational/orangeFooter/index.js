@@ -1,6 +1,6 @@
 import React from 'react'
 import FooterBar from '../footerBar'
-import Next from '../../public/icons/next.svg'
+import Next from '../../../public/icons/next.svg'
 import './style.scss'
 
 function InfoFooterBar(props) {

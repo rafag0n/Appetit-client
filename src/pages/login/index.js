@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
-import logo from '../../public/icons/logo.svg'
-import TextInput from '../../components/inputBox/textInput'
-import Button from '../../components/button'
-import auth from '../../mock/api/auth'
 import {withRouter} from 'react-router'
-import './style.scss'
 
+import TextInput from '../../components/presentational/inputBox/textInput'
+import Button from '../../components/presentational/button'
+
+import auth from '../../mock/api/auth'
+
+import './style.scss'
+import logo from '../../public/icons/logo.svg'
 
 
 let fields =  {

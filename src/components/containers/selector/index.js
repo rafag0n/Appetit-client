@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Card from '../card'
 import './style.scss'
 
 class Selector extends Component {

@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-import moment from 'moment'
-import Button from '../../components/button'
-import forth from '../../public/icons/forth.svg'
-import back from '../../public/icons/back.svg'
 import PropTypes from 'prop-types'
+import moment from 'moment'
+
+import Button from '../button'
+import forth from '../../../public/icons/forth.svg'
+import back from '../../../public/icons/back.svg'
+
 import './style.scss'
 
 

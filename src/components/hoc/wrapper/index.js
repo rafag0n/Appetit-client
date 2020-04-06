@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss'
-import Sidebar from '../Sidebar'
+import Sidebar from '../../containers/sidebar'
 
 function OrderHoc(InnerComponent) {
 
