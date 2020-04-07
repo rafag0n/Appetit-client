@@ -9,9 +9,9 @@ class ProgressBar extends Component {
 
         return <div className='progress-bar'>
             <p>Step {step} of {max}</p>
-            <div className='progress-bar--indicator'>
-                <div className='progress-bar--filled' style={{flex: step}}/>
-                <div className='progress-bar--empty'style={{flex: max-step}}/>
+            <div className='progress-bar__indicator'>
+                <div className='progress-bar__fill' style={{flex: step}}/>
+                <div className='progress-bar__empty'style={{flex: max-step}}/>
             </div>
         </div>
     }

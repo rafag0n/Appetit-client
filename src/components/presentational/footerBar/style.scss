@@ -1,5 +1,5 @@
 
-.footer-bar {
+.footer-bar__wrapper {
     height: 70px;
     position: fixed;
     width: 100%;
@@ -10,16 +10,18 @@
     z-index: 100;
 }
 
-.footer-bar--spacer {
+.footer-bar__spacer {
     height: 70px;
 }
 
+
+
 @media only screen and (min-width:800px) {
-    .footer-bar {
+    .footer-bar__wrapper {
         width:calc((100vw - 300px));
     }
     
-    .footer-bar--spacer {
+    .footer-bar__spacer {
         padding-top: 70px;
         
     }

@@ -1,26 +1,30 @@
-.info-footer-bar {
+.orange-footer {
     background-color: #FF8822;
     display: flex;
     padding-right: 25px;
     padding-left: 25px;
     align-items: center;
     height: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & h6 {
+        color: white;
+    }
+
+    & h6:nth-of-type(1) {
+        flex: 1;
+    }
+
+    &__icon {
+        height: 11.2px;
+        width: 7.1px;
+        margin-left:25px;
+    }
 }
 
-.info-footer-bar:hover {
-    cursor: pointer;
-}
 
-.info-footer-bar h6 {
-    color: white;
-}
 
-.info-footer-bar h6:nth-of-type(1) {
-    flex: 1;
-}
 
-.info-footer-bar--icon {
-    height: 11.2px;
-    width: 7.1px;
-    margin-left:25px;
-}

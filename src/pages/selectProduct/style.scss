@@ -4,21 +4,22 @@
     padding-left: 25px;
     padding-right: 25px;
     flex-direction: column;
-}
 
 
-#select-product .search-bar {
-    margin-top: 5px;
+    & .search-bar {
+        margin-top: 5px;
+    }
+
+    & .progress-bar {
+        margin-top: 30px;
+    }
+
+    & > p {
+        margin-top: 15px;
+    }
+
+    & > h6 {
+        margin-top: 20px;
+    }
 }
 
-#select-product .progress-bar {
-    margin-top: 30px;
-}
-
-#select-product>p {
-    margin-top: 15px;
-}
-
-#select-product>h6 {
-    margin-top: 20px;
-}

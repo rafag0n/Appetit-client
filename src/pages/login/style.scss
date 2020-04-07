@@ -1,10 +1,4 @@
-#login_wrapper{
-    flex-direction: column;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
+
 
 #login_page_wrapper{
     min-height: 100vh;
@@ -14,35 +8,51 @@
     display: flex;
 }
 
-#login__welcome{
-    margin-top: 40px;
-    margin-bottom: 15px;
+#login {
+    
+    &__welcome{
+        margin-top: 40px;
+        margin-bottom: 15px;
+    }
+
+    &__p {
+        margin-bottom: 10px;
+        width: 90%;
+        text-align: center;
+    }
+
 }
 
-#login__p {
-    margin-bottom: 10px;
-    width: 90%;
-    text-align: center;
+#login_wrapper {
+
+    flex-direction: column;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+    & .text_input {
+        margin-top: 15px;
+        width: 90%;
+    }
+
+    & .input-box {
+        margin-top: 15px;
+        width: 90%;
+    }
+
+    & .button-primary {
+        width: 70%;
+    }
+
+    & .button-ghost {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
 }
 
-#login_wrapper .text_input {
-    margin-top: 15px;
-    width: 90%;
-}
 
-#login_wrapper .input-box {
-    margin-top: 15px;
-    width: 90%;
-}
-
-#login_wrapper .button-primary {
-    width: 70%;
-}
-
-#login_wrapper .button-ghost {
-    margin-top: 37px;
-    margin-bottom: 37px;
-}
 
 .input_error {
     font-family: 'Open Sans';

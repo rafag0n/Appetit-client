@@ -5,7 +5,7 @@ import Add from '../../../public/icons/add.svg'
 import Button from '../button'
 import './style.scss'
 
-function DetailFooterBar (props) {
+function WhiteFooter (props) {
     
 
     let handleQuantityChange = (value) => {
@@ -29,10 +29,10 @@ function DetailFooterBar (props) {
     }
 
     
-    return <div className='detail-footer-bar'>
+    return <div className='white-footer'>
         <QuantitySelector onChange={handleQuantityChange} quantity={props.quantity}/>
         {renderDeleteButton()}
-        <div className='flex-one'/>
+        <div className='white-footer__spacer'/>
         <AddWithPriceButton price={props.price} onClick={handleSubmit}/>
     </div>
 }
@@ -41,9 +41,9 @@ function QuantitySelector(props){
 
     return (
         <div className='quantity-selector'>
-            <img src={Minus} className='quantity-selector--button' onClick={()=>props.onChange(-1)}/>
+            <img src={Minus} className='quantity-selector__button' onClick={()=>props.onChange(-1)}/>
             <h6>{props.quantity}</h6>
-            <img src={Add} className='quantity-selector--button' onClick={()=>props.onChange(1)}/>
+            <img src={Add} className='quantity-selector__button' onClick={()=>props.onChange(1)}/>
         </div>
     )
 }
@@ -61,4 +61,4 @@ function AddWithPriceButton(props){
 
 
 
-export default FooterBar(DetailFooterBar)
+export default FooterBar(WhiteFooter)

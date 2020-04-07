@@ -2,13 +2,13 @@ import React from 'react'
 import './style.scss'
 import Sidebar from '../../containers/sidebar'
 
-function OrderHoc(InnerComponent) {
+function Wrapper(InnerComponent) {
 
     return (props) => {
         
-        return <div className='order'>  
+        return <div className='wrapper'>  
                 <Sidebar />
-                <div className='container'>
+                <div className='wrapper__contents'>
                     <InnerComponent {...props}/>
                 </div>
             </div>
@@ -16,4 +16,4 @@ function OrderHoc(InnerComponent) {
     }
 }
 
-export default OrderHoc
+export default Wrapper

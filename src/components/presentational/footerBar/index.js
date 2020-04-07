@@ -7,8 +7,8 @@ function FooterBar(WrappedComponent) {
         render(){
             if (this.props.visible) {
             return <React.Fragment>
-                    <div className='footer-bar--spacer'/>
-                    <div className='footer-bar'>
+                    <div className='footer-bar__spacer'/>
+                    <div className='footer-bar__wrapper'>
                         <WrappedComponent {...this.props}/>
                     </div>
                 </React.Fragment> }

@@ -91,9 +91,9 @@ function Checkout (props) {
         <ProductList items={products} clickEnabled={false} selected={[]}/>
         <h4>Customers</h4>
         <CustomerList items={customers} clickEnabled={false} selected={[]}/>
-        <div className='row'>
+        <div className='checkout__row'>
             <h4>Total Value</h4>
-            <h4 className='checkout-total'>{getTotalPrice()}</h4>
+            <h4 className='checkout__total'>{getTotalPrice()}</h4>
         </div>
 
 

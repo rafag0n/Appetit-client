@@ -4,27 +4,36 @@
     padding-right: 25px;
     display: flex;
     flex-direction: column;
+
+    & > p {
+        margin-top: 15px;
+    }
+    
+    & > h6 {
+        margin-top: 20px;
+    }
+
+    & .info {
+        margin-top: 20px
+    }
+
+
+    & .selector {
+        margin-top: 25px;
+        padding-bottom: 15px;
+        border-bottom: 5px solid rgba(0,0,0,0.2)
+    }
+
+    & .text-box {
+        margin-top: 15px;
+    }
 }
 
 
-#product-detail>p {
-    margin-top: 15px;
-}
 
-#product-detail>h6 {
-    margin-top: 20px;
-}
 
-#product-detail .basic-info {
-    margin-top: 20px
-}
 
-#product-detail .selector {
-    margin-top: 25px;
-    padding-bottom: 15px;
-    border-bottom: 5px solid rgba(0,0,0,0.2)
-}
 
-#product-detail .text-box {
-    margin-top: 15px;
-}
+
+
+

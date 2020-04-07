@@ -1,34 +1,37 @@
-.date-input{
+
+
+.date-input {
+
     position: relative;
+
+    .date-picker {
+        position: absolute;
+        bottom: 60px;
+        right: 0px;
+        z-index: 1000000;
+    }
+
+    &__contents * {
+        border-color:rgba(0,0,0,0.2);
+        color: black;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        height: 25px;
+        width: 25px;
+        color: black;
+
+        &:hover {
+            cursor: pointer
+        }
+    }
+
+    &__text:hover {
+        cursor: pointer
+    }
+
 }
 
-.date-input .date-picker {
-    position: absolute;
-    bottom: 60px;
-    right: 0px;
-    z-index: 1000000;
-
-}
-
-.input-zone * {
-    border-color:rgba(0,0,0,0.2);
-    color: black;
-}
-
-.calendar-icon {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    height: 25px;
-    width: 25px;
-    color: black;
-}
-
-.calendar-icon:hover {
-    cursor: pointer
-}
-
-
-.date-input .date-string:hover {
-    cursor: pointer
-}

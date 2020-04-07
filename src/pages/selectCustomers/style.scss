@@ -4,21 +4,28 @@
     padding-right: 25px;
     display: flex;
     flex-direction: column;
+
+    & .search-bar {
+        margin-top: 15px;
+    }
+
+    & .progress-bar {
+        margin-top: 30px;
+    }
+
+    & > p {
+        margin-top: 15px;
+    }
+
+    & > h6 {
+        margin-top: 20px;
+    }
 }
 
 
-#select-customers .search-bar {
-    margin-top: 15px;
-}
 
-#select-customers .progress-bar {
-    margin-top: 30px;
-}
 
-#select-customers>p {
-    margin-top: 15px;
-}
 
-#select-customers>h6 {
-    margin-top: 20px;
-}
+
+
+

@@ -4,34 +4,37 @@
     padding-bottom: 17px;
     display: flex;
     align-items: center;
+
+    &:nth-of-type(1) {
+        margin-top: 40px;
+    }
+
+    & h6 {
+        font-family: 'Open Sans';
+        font-size: 14px;
+        color: white;
+    }
+
+
+    &__icon {
+        height: 16px;
+        width: 16px;
+        margin-right: 20px;
+        margin-left: 40px;
+        
+    }
+
+    
+       
 }
 
-.main-item:nth-of-type(1) {
-    margin-top: 40px;
-}
 
-.main-item h6 {
-    font-family: 'Open Sans';
-    font-size: 14px;
-    color: white;
-}
-
-.sidebar .active {
+.--active {
     background-color: white;
-   
+    & h6 {
+        color: #ff8822
+    }
 }
-
-.sidebar .active h6 {
-    color: #ff8822
-}
-
-.main-icon {
-    height: 16px;
-    width: 16px;
-    margin-right: 20px;
-    margin-left: 40px;
-}
-
 
 
 .child-item {

@@ -3,14 +3,15 @@
     display: flex;
     padding-left: 25px;
     padding-right: 25px;
-    
     flex-direction: column;
+
+    & .button-add {
+        margin-top: 25px;
+    }
+
+    & .search-bar {
+        margin-top: 5px;
+    }
 }
 
-#home .button-add {
-    margin-top: 25px;
-}
 
-#home .search-bar {
-    margin-top: 5px;
-}

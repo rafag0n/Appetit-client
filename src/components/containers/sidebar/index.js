@@ -12,7 +12,7 @@ import './style.scss'
 function Sidebar (props) {
 
     return <div className='sidebar'>
-        <img src={Logo} className='logo'/>
+        <img src={Logo} className='sidebar__logo'/>
         <MainItem text='Orders' icon={Orders} active={true}/>
         <ChildItem text='On hold'/>
         <ChildItem text='Paid' />

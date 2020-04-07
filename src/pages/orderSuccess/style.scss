@@ -6,22 +6,24 @@
     padding-left: 25px;
     padding-right: 25px;
     
-}
 
-.order-success--chef {
-    margin-top: 40px;
-    flex: 1;
-}
+    & .order-success__chef {
+        margin-top: 40px;
+        flex: 1;
+    }
 
-#order-success .row {
-    width: 80%;
-    margin-top: 50px;
-    margin-bottom: 40px;
-    flex-direction: column;
-}
+    & .order-success__column {
+        width: 80%;
+        display: flex;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        flex-direction: column;
+    }
 
-#order-success button {
-    margin-top: 15px;
+    & button {
+        margin-top: 15px;
+    }
+    
 }
 
 

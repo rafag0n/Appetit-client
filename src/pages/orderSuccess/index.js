@@ -18,9 +18,9 @@ function OrderSuccess (props) {
     }
     
     return <div id='order-success'>
-            <img src={Chef} className='order-success--chef'/>
+            <img src={Chef} className='order-success__chef'/>
             <h4>Order Successful!</h4>
-            <div className='row'>
+            <div className='order-success__column'>
                 <Button onClick={registerNewOrder} type='primary' text='Register new Order'/>
                 <Button onClick={goToHome} type='ghost' text='Go back to Dashboard Home'/>
             </div>

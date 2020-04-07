@@ -1,10 +1,12 @@
-.separator-line {
-    height: 2px;
-    width: 50%;
-    margin-top: 10px;
-    background-color: #FF8822
-}
 
-.top-text {
+.header {
     margin-top: 35px;
+
+    &__underline {
+        height: 2px;
+        width: 50%;
+        margin-top: 10px;
+        background-color: #FF8822
+    }
+    
 }

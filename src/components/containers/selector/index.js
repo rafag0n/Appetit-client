@@ -55,11 +55,11 @@ class Selector extends Component {
 
     render() {
         
-        let prompt = (this.props.shouldPrompt) ?  <p>Choose your desired {this.props.name}</p> : null
+        let prompt = (this.props.shouldPrompt) ?  <p className='selector__prompt'>Choose your desired {this.props.name}</p> : null
 
         return <div className='selector'>
             {prompt}
-            {(this.props.required)? <div className='selector-required'>Required</div>:null}
+            {(this.props.required)? <div className='selector__required'>Required</div>:null}
             {this.renderOptions()}
         </div>
     }
@@ -83,7 +83,7 @@ function RadioOption(props) {
 
     
     return (
-        <div onClick={onWrapperClicked} className='radio-option selector-card'>
+        <div onClick={onWrapperClicked} className='radio-option__card'>
             <input type='radio' 
             checked={checkedOption==value} 
             value={value} 
@@ -112,7 +112,7 @@ function CheckOption(props) {
     let checked=isChecked()
         
     return (
-        <div onClick={onWrapperClicked} className='check-option selector-card'>
+        <div onClick={onWrapperClicked} className='check-option__card'>
             <input type='checkbox' 
             checked={checked} 
             value={value} 

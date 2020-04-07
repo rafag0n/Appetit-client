@@ -1,35 +1,39 @@
-.detail-footer-bar {
+.white-footer {
     display: flex;
     height: 100%;
     align-items: center;
     padding-right: 20px;
     padding-left: 20px;
+
+    &__spacer {
+        flex: 1;
+    }
+
+    & .button {
+        flex: 1;
+    }
 }
 
 .quantity-selector {
     display: flex;
+
+    & h6 {
+        margin-right: 15px;
+    }
+
+    &:first-child() {
+        opacity: 0.7
+    }
+
+    &__button{
+        margin-right: 15px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
 }
 
-.detail-footer-bar .button {
-    flex: 1;
-}
 
-
-.quantity-selector--button:hover{
-    cursor: pointer;
-}
-
-.quantity-selector--button {
-    margin-right: 15px;
-}
-
-.quantity-selector h6 {
-    margin-right: 15px;
-}
-
-.quantity-selector:first-child() {
-    opacity: 0.7
-}
 
 .add-with-price {
     border-radius: 5px;
@@ -41,21 +45,22 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & h5 {
+        color: white;
+        font-family: 'Open Sans';
+        font-size: 14px;
+
+        &:first-child{
+            color: white;
+            font-family: 'Open Sans';
+            font-size: 14px;
+            margin-right: 20px;
+        }
+    }
 }
 
-.add-with-price:hover {
-    cursor: pointer;
-}
-
-.add-with-price h5 {
-    color: white;
-    font-family: 'Open Sans';
-    font-size: 14px;
-}
-
-.add-with-price h5:first-child{
-    color: white;
-    font-family: 'Open Sans';
-    font-size: 14px;
-    margin-right: 20px;
-}

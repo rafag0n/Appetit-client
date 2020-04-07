@@ -4,38 +4,46 @@
     padding-right: 25px;
     display: flex;
     flex-direction: column;
+
+    & .search-bar {
+        margin-top: 5px;
+    }
+
+    & .progress-bar {
+        margin-top: 30px;
+    }
+
+    & > p {
+        margin-top: 15px;
+    }
+
+    & > h6 {
+        margin-top: 20px;
+    }
+
+    & .date-input {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        flex: 1;
+    }
+
+    & .selector {
+        flex: 1;
+    }
+
+    & > button{
+        margin-top: 30px;
+        margin-bottom: 10px;
+        align-self: flex-end;
+        width: 50%;
+    }
 }
 
 
-#payment-status .search-bar {
-    margin-top: 5px;
-}
 
-#payment-status .progress-bar {
-    margin-top: 30px;
-}
 
-#payment-status>p {
-    margin-top: 15px;
-}
 
-#payment-status>h6 {
-    margin-top: 20px;
-}
 
-#payment-status .date-input {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    flex: 1;
-}
 
-#payment-status .selector {
-    flex: 1;
-}
 
-#payment-status>button{
-    margin-top: 30px;
-    margin-bottom: 10px;
-    align-self: flex-end;
-    width: 50%;
-}
+

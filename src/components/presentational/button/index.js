@@ -15,16 +15,16 @@ function Button (props) {
     }
 
     let commonButton = () => {
-        let enabled = (props.enabled) ? '' : 'button-disabled'
-        let className = `button-${props.type} ${enabled}`
+        let disabled= (props.enabled) ? '' : ' --disabled'
+        let className = `button-${props.type}${disabled}`
         return (<button className={className} onClick={onClick}>{props.text}</button>)
     }
 
 
     let addButton = () => {
         return (<button onClick={onClick} className='button-add'>
-            <img src={Add} className='button-add--icon'/>
-            <div className='button-add--text'>{props.text}</div>
+            <img src={Add} className='button-add__icon'/>
+            <div className='button-add__text'>{props.text}</div>
         </button>) 
     }
 

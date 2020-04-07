@@ -32,15 +32,15 @@ class SearchBar extends Component {
 
     submitButton = () => {
         if (this.state.value.length >= 1){
-            return <img src={arrowForward} onClick={this.onSubmit} className='search-bar--submit-button'/>
+            return <img src={arrowForward} onClick={this.onSubmit} className='search-bar__submit'/>
         }
     }
 
     render(){
         return (
             <div className='search-bar'>
-                <img src={search} className='search-bar--icon'/>
-                <input value={this.state.value} onChange={this.onChange} onKeyDown={this.onKeyDown}  type='text' placeholder={this.props.placeholder}></input>
+                <img src={search} className='search-bar__icon'/>
+                <input className='search-bar__input' value={this.state.value} onChange={this.onChange} onKeyDown={this.onKeyDown}  type='text' placeholder={this.props.placeholder}></input>
                 {this.submitButton()}
                 <div className='underline'/>
             </div>

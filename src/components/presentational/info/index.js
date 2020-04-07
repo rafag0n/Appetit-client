@@ -5,9 +5,9 @@ function BasicInfo (props) {
 
     return (
         
-        <div className='basic-info'>
-            <img className='basic-info--image' src={props.imageUrl}/>
-            <div className='basic-info--vertical-wrapper'>
+        <div className='info'>
+            <img className='info__image' src={props.imageUrl}/>
+            <div className='info__column'>
                 <h6>{props.title}</h6>
                  <p>{props.subtitle}</p>
             </div>

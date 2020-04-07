@@ -59,7 +59,7 @@ class DatePicker extends Component {
         let numberSpaces = displayDate.startOf('month').day();
         for (let spaces=0; spaces<numberSpaces; spaces++){
             const key = `spaces${spaces}`
-            dateNodes.unshift(<td key={key} className='date-picker--date-slot'></td>)
+            dateNodes.unshift(<td key={key} className='date-picker__slot'></td>)
         }   
         return dateNodes;
     }
@@ -99,7 +99,7 @@ class DatePicker extends Component {
     renderMonthSelector = () =>  {
         let {displayDate} = this.state
         let text = `${displayDate.format('MMMM')} of ${displayDate.year()}`
-        return <div className='date-picker--month-selector'>
+        return <div className='date-picker__month-selector'>
             <img src={back} onClick={()=>this.changeMonth(-1)}/>
             <h6>{text}</h6>
             <img src={forth} onClick={()=>this.changeMonth(1)}/>
@@ -110,8 +110,8 @@ class DatePicker extends Component {
         let dateNodes = this.renderDates()
         let calendarChildren = this.insertEmptySpaces(dateNodes)
         let calendar = this.formatCalendar(calendarChildren)
-        return (<table className='date-picker--calendar'>
-            <tbody className='date-picker--calendar-body'>
+        return (<table className='date-picker__calendar-wrapper'>
+            <tbody className='date-picker__calendar'>
                 {this.renderDaysOfWeek()}
                 {calendar}
             </tbody>
@@ -127,7 +127,7 @@ class DatePicker extends Component {
     renderDaysOfWeek = () => {
         let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         let children = days.map((day)=>{
-            return <td key={day} className='date-picker--day-of-week'>{day}</td>
+            return <td key={day} className='date-picker__day'>{day}</td>
         })
         return <tr>{children}</tr>
     }
@@ -154,7 +154,7 @@ class DatePicker extends Component {
                 {this.renderSelectedDate()}
                 {this.renderMonthSelector()}
                 {this.renderCalendar()}
-                <div className='row'>
+                <div className='date-picker__row'>
                     <Button onClick={this.handleSubmit} type='ghost' text='Confirm'/>
                 </div>
             </div>
@@ -174,8 +174,8 @@ DatePicker.propTypes = {
 
 let DateButton = ({selected, date, dateString, onClick}) => {
     
-    selected = (selected) ? 'selected': null
-    let className = `date-picker--date-slot enabled ${selected}`
+    selected = (selected) ? '--selected': ''
+    let className = `date-picker__slot --enabled ${selected}`
     
     return <td  onClick={()=>onClick(dateString)} 
     className={className}>{date}</td>

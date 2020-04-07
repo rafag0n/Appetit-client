@@ -9,20 +9,20 @@ class ListItem extends Component {
     }
 
     renderImageOverlay = () => {
-        if (this.props.selected) return <img className='list-item--image-overlay' onClick={this.onClick} src={Check}/>
+        if (this.props.selected) return <img className='list-item__overlay' onClick={this.onClick} src={Check}/>
 
     }
 
     
     render() {
         let secondaryValue = this.props.secondaryValue ? <p>{this.props.secondaryValue}</p> : null
-        let enabled = this.props.clickEnabled ? 'enabled-list' : null
+        let enabled = this.props.clickEnabled ? ' --enabled' : null
         
         return (
             <div className={`list-item ${enabled}`}>
-                <div className='list-item--image'>
+                <div className='list-item__image-wrapper'>
                     {this.renderImageOverlay()}
-                    <img className='list-item--image-inner' onClick={this.onClick} src={this.props.imageUrl}/>
+                    <img className='list-item__image' onClick={this.onClick} src={this.props.imageUrl}/>
                 </div>
                 <h6 onClick={this.onClick}>{this.props.item}</h6>
                 {secondaryValue}

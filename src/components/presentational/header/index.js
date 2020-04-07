@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import './style.scss'
 
-function TopText(props) {
+function Header(props) {
 
-    return (<div className='top-text'>
+    return (<div className='header'>
         <h3>{props.value}</h3>
-        <div className='separator-line'/>
+        <div className='header__underline'/>
     </div>)
 
 
 }
 
-export default TopText
+export default Header

@@ -48,7 +48,7 @@ function List(onClick = null, secondaryValueSetter=(()=>{}), needsHistory=false)
             return Object.keys(itemsByCategory).map((categoryName)=>{
                 let items = itemsByCategory[categoryName]
                 return (
-                    <div key={categoryName} className='order-list--category'>
+                    <div key={categoryName} className='list__category'>
                     <h6>{categoryName}</h6>
                         {renderItems(items)}
                     </div>
