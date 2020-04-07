@@ -1,4 +1,6 @@
 
+
+
 .date-picker {
     width: 250px;
     background-color:white;
@@ -17,7 +19,7 @@
     &__slot , &__day {
         text-align: center;
         padding: 8px;
-        font-family: 'Open Sans';
+        font-family: $main-font-family;
         font-size: 12px;
         color: rgba(0,0,0,0.60)
     }
@@ -42,7 +44,7 @@
     }
 
     & .--selected {
-        background-color: #ff8822;
+        background-color: $main-color;
         border-radius: 1000px;
         color: white;
     }

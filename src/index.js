@@ -10,7 +10,7 @@ import PaymentStatus from './pages/paymentStatus'
 import OrderSuccess from './pages/orderSuccess'
 import Checkout from './pages/checkout'
 import ReactDOM from 'react-dom'
-import './public/scss/main.scss'
+import './public/sass/main.scss'
 import {Provider} from 'react-redux'
 import store from './redux/store'
 

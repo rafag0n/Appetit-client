@@ -1,3 +1,5 @@
+
+
 .white-footer {
     display: flex;
     height: 100%;
@@ -37,7 +39,7 @@
 
 .add-with-price {
     border-radius: 5px;
-    background-color: #FF8822;
+    background-color: $main-color;
     height: 48px;
     padding-right: 15px;
     padding-left: 15px;
@@ -52,12 +54,12 @@
 
     & h5 {
         color: white;
-        font-family: 'Open Sans';
+        font-family: $main-font-family;
         font-size: 14px;
 
         &:first-child{
             color: white;
-            font-family: 'Open Sans';
+            font-family: $main-font-family;
             font-size: 14px;
             margin-right: 20px;
         }

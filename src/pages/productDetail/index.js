@@ -6,7 +6,7 @@ import { withRouter } from 'react-router'
 import Header from '../../components/presentational/header/'
 import Info from '../../components/presentational/info'
 import Selector from '../../components/containers/selector'
-import TextBox from '../../components/presentational/textBox'
+import TextField from '../../components/presentational/textField'
 import WhiteFooter from '../../components/presentational/whiteFooter'
 import Wrapper from '../../components/hoc/wrapper'
 
@@ -164,7 +164,7 @@ class ProductDetail extends Component {
             <Info title={name} imageUrl={imageUrl} subtitle={price}/>
             {this.renderSelectors()}
             <h6>Special Requests</h6>
-            <TextBox placeholder='Any special request?' value={this.state.specialRequest} onUpdate={this.handleSpecialRequest}></TextBox>
+            <TextField placeholder='Any special request?' value={this.state.specialRequest} onUpdate={this.handleSpecialRequest}/>
             <WhiteFooter onSubmit={this.onSubmit}  deleteEnabled={this.state.deleteEnabled} handleDelete={this.onDelete}
             onQuantityChange={this.handleQuantity} quantity={this.state.quantity} visible={footerBarVisible} price={totalPrice}/>
         </div>

@@ -1,3 +1,4 @@
+
 .main-item {
     display: flex;
     padding-top: 17px;
@@ -32,7 +33,7 @@
 .--active {
     background-color: white;
     & h6 {
-        color: #ff8822
+        color: $main-color
     }
 }
 
@@ -43,7 +44,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     border-left: 2px solid white;
-    font-family: 'Open Sans';
+    font-family: $main-font-family;
     font-size: 14px;
     color: white;
 }
