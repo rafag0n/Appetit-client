@@ -1,4 +1,4 @@
-APPETIT
+# APPETIT
 
 <p align="center">
     <img src="src/public/icons/logo.svg"  title="Logo">
